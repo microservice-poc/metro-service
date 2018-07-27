@@ -1,0 +1,65 @@
+================================================================================ -
+Phase 1                                                                          -
+-------                                                                          -
+tech stack                                                                       -
+    -> java 1.8                                                                  -
+    -> spring boot                                                               -
+    -> spring data/JPA                                                           -
+    -> spring cloud                                                              -
+    -> angular/react                                                             -
+    -> github                                                                    -
+    -> maven                                                                     -
+    -> Tortoise GIT                                                              -
+    -> mysql                                                                     -
+                                                                                 -
+initial tasks                                                                    -
+    -> database table creation - WIP                                             -                                                                                 -
+    -> github repo cration - complete                                            -
+                                                                                 -
+application with following components of microservices                           -
+    -> business service - customer                                               -
+    -> business service - product                                                -
+    -> business service - ui                                                     -
+    -> infra - eureka server (discovery)                                         -
+    -> infra - zuul - intelligent routing                                        -
+    -> infra - api gateway (entry point, security, etc..)                        -
+                                                                                 -
+Integration                                                                      -
+    -> mysql database                                                            -
+                                                                                 -
+================================================================================ -
+Phase 2                                                                          -
+-------                                                                          -
+    -> business service - billing                                                -
+    -> business service - email notification                                     -
+    -> infra - config server                                                     -
+    -> infra - ribbon - client side load balancing                               -
+    -> infra - hystrix - fault tolerance                                         -
+                                                                                 -
+Integration                                                                      -
+    -> kafka queue                                                               -
+    -> email server(required?)                                                   -
+                                                                                 -
+================================================================================ -
+Phase 3                                                                          -
+-------                                                                          -
+    -> CI/CD to deploy all services automatically.                               -
+    -> distributed transaction management                                        -
+    -> business service - product reviews (implement with nosql database)        -
+    -> product table changes to be propagated to product review tables.          -
+    -> dockerize                                                                 -
+================================================================================ -
+Phase 4                                                                          -
+-------                                                                          -
+    -> deploy on external cloud like AWS, google cloud                           -
+                                                                                 -
+                                                                                 -
+================================================================================ -
+                                                                                 -
+                                                                                 -
+                                                                                 -
+================================================================================ -
+                                                                                 -
+                                                                                 -
+                                                                                 -
+================================================================================ -
