@@ -3,18 +3,20 @@ Phase 1                                                                         
 -------                                                                          -
 tech stack                                                                       -
     -> java 1.8                                                                  -
-    -> spring boot                                                               -
-    -> spring data/JPA                                                           -
-    -> spring cloud                                                              -
+    -> spring boot 2.0.0                                                         -
+    -> spring data/JPA  2.0.0                                                    -
+    -> spring cloud 2.0.0                                                        -
     -> angular/react                                                             -
-    -> github                                                                    -
-    -> maven                                                                     -
+    -> github  https://github.com/microservice-poc/metro-service                 -
+    -> maven 3.5.4                                                               -
     -> Tortoise GIT                                                              -
-    -> mysql                                                                     -
+    -> mysql  8.0.11                                                             -
+                                                                                 -
+Software location \\10.180.139.67\Softwares\microservices-poc                    -
                                                                                  -
 initial tasks                                                                    -
-    -> database table creation - WIP                                             -                                                                                 -
-    -> github repo cration - complete                                            -
+    -> database table creation                                                   -                                                                                 -
+    -> github repo creation - complete                                           -
                                                                                  -
 application with following components of microservices                           -
     -> business service - customer                                               -
