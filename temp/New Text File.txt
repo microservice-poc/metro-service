@@ -1,5 +1,0 @@
-mysql_install_db.exe -R --datadir=D:\mariadb-10.0.35-winx64\data
-
-
-
-mysql_secure_installation.exe -R --datadir=D:\mysql-8.0.11-winx64\data
