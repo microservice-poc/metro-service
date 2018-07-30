@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ZuulProxyApplication</name>
+	<name>metro-zuul-service</name>
 	<description>Metro Zuul Proxy Application</description>
 
 	<parent>
