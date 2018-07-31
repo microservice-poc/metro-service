@@ -1,6 +1,6 @@
 package com.metroservice.route.web.service;
 
-import com.metroservice.route.business.domain.Route;
+import com.metroservice.route.business.domain.RouteTO;
 import com.metroservice.route.business.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,15 +18,15 @@ public class RouteServiceController {
     private RouteService routeService;
 
     @RequestMapping(method= RequestMethod.GET, value="/route/{date}")
-    public List<Route> getAllRoutesForDate(@PathVariable(value="date")String dateString) throws Exception {
+    public List<RouteTO> getAllRoutesForDate(@PathVariable(value="date")String dateString) throws Exception {
 		System.out.println("Shibu2 *****************************************************************="+routeService);
-		List<Route> routes = this.routeService.getRoutesForDate(dateString);
+		List<RouteTO> routes = this.routeService.getRoutesForDate(dateString);
 		System.out.println("Shibu2 ***routes="+routes);
-        //List<Route> routes2 = new ArrayList<>();
-        //Route oneRoute = new Route();
-        //oneRoute.setRouteId(1);
-        //oneRoute.setRouteName("Shibu");
-		//routes2.add(oneRoute);
+        //List<RouteTO> routes2 = new ArrayList<>();
+        //RouteTO oneRouteTO = new RouteTO();
+        //oneRouteTO.setRouteTOId(1);
+        //oneRouteTO.setRouteTOName("Shibu");
+		//routes2.add(oneRouteTO);
 		//System.out.println("Shibu2 ***routes2="+routes2);
 		//Thread.sleep(300000);
         return routes;

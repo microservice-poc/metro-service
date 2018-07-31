@@ -2,7 +2,7 @@ package com.metroservice.route.business.domain;
 
 import java.util.Date;
 
-public class Route {
+public class RouteTO {
     private long   routeId             ;
     private long   startingStationId   ;
     private long   endStationId        ;
