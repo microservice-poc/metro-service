@@ -8,5 +8,6 @@
   <modules>
     <module>metro-config-server</module>
     <module>metro-eureka-server</module>
+    <module>metro-zuul-service</module>
   </modules>
 </project>

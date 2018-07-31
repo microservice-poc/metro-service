@@ -1,4 +1,4 @@
-drop   database `metrodb`;
+drop   database if exists `metrodb`;
 create database `metrodb`;
 use metrodb;
 source ./metro-train/database/ddl.sql
