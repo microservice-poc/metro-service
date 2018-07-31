@@ -1,14 +1,14 @@
---sqlplus system/password@xe
---
---
---create user route identified by password;
---grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
---  CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, 
---  CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, 
---  CREATE TRIGGER, CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE 
---  to route;
---
---exit
+-- sqlplus system/password@xe
+-- 
+-- 
+-- create user route identified by password;
+-- grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
+--   CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, 
+--   CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, 
+--   CREATE TRIGGER, CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE 
+--   to route;
+-- 
+-- exit
   
 
 --DROP TABLE ROUTE_STATION;
@@ -44,3 +44,13 @@ CREATE TABLE ROUTE.ROUTE_STATION (
 --ALTER TABLE ROUTE_STATION ADD FOREIGN KEY (ROUTE_ID)   REFERENCES ROUTE(ROUTE_ID);
 --ALTER TABLE ROUTE_STATION ADD FOREIGN KEY (STATION_ID) REFERENCES STATION(STATION_ID);
 
+---------------------------------------------------------------------------------------------------------
+--This sequence is required by Hibernate for AUTO_INCREMENTING columns across the application
+CREATE SEQUENCE route.hibernate_sequence
+  INCREMENT BY 1
+  MINVALUE 1
+  MAXVALUE 9999999999999999999
+;
+
+CREATE PUBLIC SYNONYM hibernate_sequence FOR ROUTE.hibernate_sequence;
+---------------------------------------------------------------------------------------------------------

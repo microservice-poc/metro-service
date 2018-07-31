@@ -44,7 +44,7 @@ public class Route {
         this.startingStationId = startingStationId;
     }
 
-    public long getNumber() {
+    public long getEndStationId() {
         return endStationId;
     }
 
@@ -52,10 +52,10 @@ public class Route {
         this.endStationId = endStationId;
     }
 
-    public Date getBedInfo() {
+    public Date getLastModifiedDate() {
         return lastModifiedDate;
     }
-
+    
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }

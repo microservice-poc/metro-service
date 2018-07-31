@@ -1,6 +1,7 @@
 package com.metroservice.route.business.service;
 
 import com.metroservice.route.business.domain.RouteTO;
+import com.metroservice.route.business.util.Util;
 import com.metroservice.route.data.entity.Route;
 import com.metroservice.route.data.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +21,31 @@ public class RouteService {
     public RouteService(RouteRepository routeRepository) {
         this.routeRepository = routeRepository;
     }
-
+	//-------------------------------------------------------------------------------------------
     public List<RouteTO> getRoutesForDate(String date){
+        List<RouteTO> returnRoutes = new ArrayList<>();
         Iterable<Route> routes = this.routeRepository.findAll();
         
         routes.forEach(route->{
-            System.out.println("hihihihihi"+route.getId());
+			RouteTO routeTO = Util.convertEntityToDTO(route);
+			System.out.println("routeTO = "+routeTO);
+			returnRoutes.add(routeTO);
         });
-        
-        
-        
-        
-        List<RouteTO> routes2 = new ArrayList<>();
-        RouteTO oneRoute = new RouteTO();
-        oneRoute.setRouteId(71);
-        //oneRoute.setRouteName("Shibu");
-		routes2.add(oneRoute);
-
-		System.out.println("Shibu3 *****************************************************************");
-//		System.out.println("Shibu3 ***routes="+routes);
 		
-//        for(Long roomId:rRouteMap.keySet()){
-//            rRoutes.add(rRouteMap.get(roomId));
-//        }
-        return routes2;
+		Route route = new Route();
+		route.setId(9999);
+		route.setStartingStationId(997);
+		route.setEndStationId(998);
+		route.setLastModifiedDate(new Date());
+		this.routeRepository.save(route);
+        
+        return returnRoutes;
     }
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
 }

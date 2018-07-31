@@ -1,8 +1,19 @@
-package com.metroservice.route.business.domain;
+package com.metroservice.route.business.util;
 
+import com.metroservice.route.business.domain.RouteTO;
+import com.metroservice.route.data.entity.Route;
 import java.util.Date;
 
-public class RouteTO {
+public class Util {
+	public static RouteTO convertEntityToDTO(Route entity) {
+		RouteTO to = new RouteTO();
+		to.setRouteId          (entity.getId               ());
+		to.setStartingStationId(entity.getStartingStationId());
+		to.setEndStationId     (entity.getEndStationId     ());
+		to.setLastModifiedDate (entity.getLastModifiedDate ());
+		return to;
+	}
+	
     private long   routeId             ;
     private long   startingStationId   ;
     private long   endStationId        ;
@@ -12,14 +23,6 @@ public class RouteTO {
     public long   getStartingStationId()   {        return startingStationId   ;           } public void setStartingStationId(long   startingStationId   ) {        this.startingStationId    = startingStationId   ;    }
     public long   getEndStationId     ()   {        return endStationId        ;           } public void setEndStationId     (long   endStationId        ) {        this.endStationId         = endStationId        ;    }
     public Date   getLastModifiedDate ()   {        return lastModifiedDate    ;           } public void setLastModifiedDate (Date   lastModifiedDate    ) {        this.lastModifiedDate     = lastModifiedDate    ;    }
-	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n");
-		sb.append("routeId             =").append(routeId             ).append("\n");
-		sb.append("startingStationId   =").append(startingStationId   ).append("\n");
-		sb.append("endStationId        =").append(endStationId        ).append("\n");
-		sb.append("lastModifiedDate    =").append(lastModifiedDate    ).append("\n");
-		return sb.toString();
-	}
 }
+
+

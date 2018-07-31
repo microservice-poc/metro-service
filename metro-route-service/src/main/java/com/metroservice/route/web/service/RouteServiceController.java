@@ -22,13 +22,6 @@ public class RouteServiceController {
 		System.out.println("Shibu2 *****************************************************************="+routeService);
 		List<RouteTO> routes = this.routeService.getRoutesForDate(dateString);
 		System.out.println("Shibu2 ***routes="+routes);
-        //List<RouteTO> routes2 = new ArrayList<>();
-        //RouteTO oneRouteTO = new RouteTO();
-        //oneRouteTO.setRouteTOId(1);
-        //oneRouteTO.setRouteTOName("Shibu");
-		//routes2.add(oneRouteTO);
-		//System.out.println("Shibu2 ***routes2="+routes2);
-		//Thread.sleep(300000);
         return routes;
     }
 }
