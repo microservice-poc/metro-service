@@ -9,5 +9,6 @@
     <module>metro-eureka-server</module>
     <module>metro-zuul-service</module>
     <module>metro-route-service</module>
+    <module>metro-train-service</module>
   </modules>
 </project>
