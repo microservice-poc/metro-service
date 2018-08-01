@@ -2,7 +2,7 @@
 -- 
 -- 
 -- create user train identified by password;
---grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
+-- grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
 --  CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, 
 --  CREATE ROLE, CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, 
 --  CREATE TRIGGER, CREATE TYPE, CREATE VIEW, UNLIMITED TABLESPACE 
@@ -10,14 +10,10 @@
 -- 
 -- exit
   
-sqlplus train/password@xe
+--sqlplus train/password@xe
 
---DROP TABLE ROUTE_STATION;
---DROP TABLE ROUTE;
---DROP TABLE STATION;
-
-Table : TRAIN - columns = id, train_name, train_number, last_serviced_date
-Table : COMPARTMENT - columns = id, compartment_no, compartment_type, number_of_seats, train_id(ForeignKey)
+--DROP TABLE TRAIN.TRAIN;
+--DROP TABLE TRAIN.COMPARTMENT;
 
 
 

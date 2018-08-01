@@ -14,6 +14,15 @@ public class Util {
 		return to;
 	}
 	
+	public static Route convertDTOToEntity(RouteTO to) {
+		Route entity = new Route();
+		entity.setId               (to.getRouteId          ());
+		entity.setStartingStationId(to.getStartingStationId());
+		entity.setEndStationId     (to.getEndStationId     ());
+		entity.setLastModifiedDate (to.getLastModifiedDate ());
+		return entity;
+	}
+	
     private long   routeId             ;
     private long   startingStationId   ;
     private long   endStationId        ;
