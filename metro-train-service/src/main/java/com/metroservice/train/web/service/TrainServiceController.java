@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,4 +45,38 @@ public class TrainServiceController {
 		System.out.println("getTrainByTrainNumber in Controller======================================"+trainTO);
         return trainTO;
     }
+    
+    @RequestMapping(method= RequestMethod.POST, value="/train/add")
+    public void addTrain(@RequestBody TrainTO trainTO) throws Exception {
+		System.out.println("TrainServiceController.saveTrain():***trainTO="+trainTO);
+		TrainTO retTrainTo = trainService.addTrain(trainTO);
+		System.out.println("TrainServiceController.saveRoute():***retTrainTo="+retTrainTo);
+    }
+    
+    
+    @RequestMapping(value = "/train/deleteAll", method = RequestMethod.DELETE)
+    public void deleteAllTrains() throws Exception {
+		trainService.deleteAllTrains();
+	}
+    
+    
+    @RequestMapping(value = "/train/trainId/{trainId}", method = RequestMethod.DELETE)
+    public void deleteTrainByTrainId(@PathVariable(value="trainId")String trainId) throws Exception {
+		trainService.deleteTrainByTrainId(Long.valueOf(trainId));
+	}
+    
+    
+    @RequestMapping(value = "/train/{trainNumber}", method = RequestMethod.DELETE)
+    public void deleteTrainByTrainNumber(@PathVariable(value="trainNumber")String trainNumber) throws Exception {
+		trainService.deleteTrainByTrainNumber(Long.valueOf(trainNumber));
+	}
+    
+    
+    @RequestMapping(method= RequestMethod.PUT, value="/train/update")
+    public void updateTrain(@RequestBody TrainTO trainTO) throws Exception {
+		System.out.println("TrainServiceController.updateTrain():***trainTO="+trainTO);
+		TrainTO retTrainTo = trainService.updateTrain(trainTO);
+		System.out.println("TrainServiceController.updateTrain():***retTrainTo="+retTrainTo);
+    }
+    
 }

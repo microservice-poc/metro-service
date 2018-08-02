@@ -15,7 +15,14 @@ public class TrainUtil {
 		retTrainTO.setLastModifiedDate(trainEntity.getLastModifiedDate ());
 		return retTrainTO;
 	}
-	
+	public static Train convertDTOToEntity(TrainTO trainTO) {
+		Train train = new Train();
+		train.setTrainName(trainTO.getTrainName());
+		train.setTrainNumber(trainTO.getTrainNumber());
+		train.setLastServicedDate(trainTO.getLastServicedDate());
+		train.setLastModifiedDate(trainTO.getLastModifiedDate ());
+		return train;
+	}
    
 }
 

@@ -53,5 +53,33 @@ public class TrainService {
 		return trainTO;
     }
     
+    public TrainTO addTrain(TrainTO routeTO){
+        Train train = TrainUtil.convertDTOToEntity(routeTO);
+        Train retTrain = trainRepository.save(train);
+        return TrainUtil.convertEntityToDTO(retTrain);
+    }
+    
+    public void deleteAllTrains(){
+    	System.out.println("deleteAllTrains============================== ");
+        trainRepository.deleteAll();
+    }
+    
+    
+    public void deleteTrainByTrainId(long trainId){
+    	System.out.println("deleteTrainByTrainId============================== "+trainId);
+    	trainRepository.delete(trainId);
+    }
+    
+    
+    public void deleteTrainByTrainNumber(long trainNumber){
+    	System.out.println("deleteTrainByTrainNumber============================== "+trainNumber);
+    	trainRepository.deleteTrainByTrainNumber(trainNumber);
+    }
+    
+    public TrainTO updateTrain(TrainTO routeTO){
+        Train train = TrainUtil.convertDTOToEntity(routeTO);
+        Train retTrain = trainRepository.save(train);
+        return TrainUtil.convertEntityToDTO(retTrain);
+    }
     
 }
