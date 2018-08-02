@@ -21,14 +21,14 @@ public class RouteServiceController {
     @RequestMapping(method= RequestMethod.GET, value="/route/all")
     public List<RouteTO> getAllRoutes() throws Exception {
 		List<RouteTO> routes = this.routeService.getAllRoutes();
-		System.out.println("getAllRoutes ***routes="+routes);
+		System.out.println("RouteServiceController.getAllRoutes() ***routes="+routes);
         return routes;
     }
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/route/{id}")
     public RouteTO getRouteById(@PathVariable(value="id")String id) throws Exception {
 		RouteTO route = this.routeService.getRouteById(Long.valueOf(id));
-		System.out.println("getRouteById ***route="+route);
+		System.out.println("RouteServiceController.getRouteById() ***route="+route);
         return route;
     }
     //------------------------------------------------------------------------------------------------------------------------------

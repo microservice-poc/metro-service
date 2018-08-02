@@ -28,7 +28,7 @@ public class RouteService {
         
         routes.forEach(route->{
 			RouteTO routeTO = Util.convertEntityToDTO(route);
-			System.out.println("routeTO = "+routeTO);
+			//System.out.println("routeTO = "+routeTO);
 			returnRoutes.add(routeTO);
         });
 		
@@ -45,14 +45,14 @@ public class RouteService {
     public RouteTO getRouteById(long id){
         Route route = this.routeRepository.findOne(id);
         RouteTO routeTO = Util.convertEntityToDTO(route);
-        System.out.println("routeTO = "+routeTO);
+        //System.out.println("routeTO = "+routeTO);
         
         return routeTO;
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO saveRoute(RouteTO routeTO){
         Route entity = Util.convertDTOToEntity(routeTO);
-        System.out.println("RouteService.saveRoute():routeTO = "+routeTO);
+        //System.out.println("RouteService.saveRoute():routeTO = "+routeTO);
 		Route entity2 = this.routeRepository.save(entity);
         return Util.convertEntityToDTO(entity2);
     }
