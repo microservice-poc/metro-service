@@ -52,6 +52,7 @@ public class RouteService {
 	//-------------------------------------------------------------------------------------------
     public RouteTO saveRoute(RouteTO routeTO){
         Route entity = Util.convertDTOToEntity(routeTO);
+        entity.setLastModifiedDate(new Date());
         //System.out.println("RouteService.saveRoute():routeTO = "+routeTO);
 		Route entity2 = this.routeRepository.save(entity);
         return Util.convertEntityToDTO(entity2);
