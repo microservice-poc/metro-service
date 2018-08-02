@@ -12,5 +12,8 @@ public interface TrainRepository extends CrudRepository<Train, Long> {
 	@Query("SELECT t FROM Train t where t.trainNumber = ?1")
 	public Train findByTrainNumber(long trainNumber);
 	
+	
+	@Query("DELETE FROM Train t where t.trainNumber = ?1")
+	public Train deleteTrainByTrainNumber(long trainNumber);
 
 }
