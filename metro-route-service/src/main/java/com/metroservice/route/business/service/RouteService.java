@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class RouteService {
@@ -43,7 +44,7 @@ public class RouteService {
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO getRouteById(long id){
-        Route route = this.routeRepository.findOne(id);
+        Optional<Route> route = this.routeRepository.findById(id);
         RouteTO routeTO = Util.convertEntityToDTO(route);
         //System.out.println("routeTO = "+routeTO);
         

@@ -2,6 +2,7 @@ package com.metroservice.train.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class TrainService {
     
     public TrainTO getTrainByTrainId(long trainId){
     	System.out.println("getTrainByTrainId service============================== "+trainId);
-        Train train = trainRepository.findOne(trainId);
+        Optional<Train> train = trainRepository.findById(trainId);
         TrainTO trainTO = TrainUtil.convertEntityToDTO(train);
         System.out.println("getTrainByTrainId==================trainTO============ "+trainTO);
         
@@ -67,7 +68,7 @@ public class TrainService {
     
     public void deleteTrainByTrainId(long trainId){
     	System.out.println("deleteTrainByTrainId============================== "+trainId);
-    	trainRepository.delete(trainId);
+    	trainRepository.deleteById(trainId);
     }
     
     
