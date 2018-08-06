@@ -44,7 +44,7 @@ public class RouteService {
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO getRouteById(long id){
-        Optional<Route> route = this.routeRepository.findById(id);
+        Route route = this.routeRepository.findById(id).get();
         RouteTO routeTO = Util.convertEntityToDTO(route);
         //System.out.println("routeTO = "+routeTO);
         

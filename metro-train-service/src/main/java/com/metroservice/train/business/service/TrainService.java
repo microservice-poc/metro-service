@@ -37,7 +37,8 @@ public class TrainService {
     
     public TrainTO getTrainByTrainId(long trainId){
     	System.out.println("getTrainByTrainId service============================== "+trainId);
-        Optional<Train> train = trainRepository.findById(trainId);
+        Train train = trainRepository.findById(trainId).get();
+        
         TrainTO trainTO = TrainUtil.convertEntityToDTO(train);
         System.out.println("getTrainByTrainId==================trainTO============ "+trainTO);
         
