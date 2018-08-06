@@ -10,5 +10,6 @@
     <module>metro-zuul-service</module>
     <module>metro-route-service</module>
     <module>metro-train-service</module>
+	<module>metro-scheduler-service</module>
   </modules>
 </project>
