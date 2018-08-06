@@ -116,10 +116,4 @@
 		</plugins>
 	</build>
 
-<repositories>
-    <repository>
-      <id>datanucleus</id>
-      <url>http://www.datanucleus.org/downloads/maven2/</url>
-    </repository>
- </repositories>
 </project>
