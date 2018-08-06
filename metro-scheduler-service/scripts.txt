@@ -1,0 +1,32 @@
+CREATE USER SCHEDULE IDENTIFIED BY schedule;
+GRANT CONNECT TO SCHEDULE;
+GRANT CREATE SESSION  TO SCHEDULE;
+GRANT CONNECT, RESOURCE, DBA TO SCHEDULE;
+GRANT UNLIMITED TABLESPACE TO SCHEDULE;
+connect SCHEDULE/schedule;
+
+create table SCHEDULE(schedule_id number(10) not null,route_id number(10) not null,train_id number(10) not null,start_time TIMESTAMP,end_time TIMESTAMP,constraint schedule_pk PRIMARY KEY (schedule_id));
+
+CREATE SEQUENCE SCHEDULE.schedule_sequence INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999;
+insert into SCHEDULE(schedule_id ,route_id ,train_id ,start_time,end_time) values (schedule_sequence.nextval,1,1,to_date('20180804 08:30:00','yyyymmdd hh24:mi:ss'),to_date('20180804 20:30:00','yyyymmdd hh24:mi:ss'));
+
+
+mvn install:install-file -Dfile=C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
+mvn install:install-file -Dfile=E:\micro_poc\ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar
+
+ <!-- ojdbc6.jar example -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0</version>
+        </dependency>
+
+        <!-- ojdbc7.jar example -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0</version>
+        </dependency>
+		
+		
+		https://www.concretepage.com/spring-boot/spring-boot-crudrepository-example
