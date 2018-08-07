@@ -10,11 +10,10 @@
 
 	<name>metro-eureka-server</name>
 	<description>Demo project for Spring Boot</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>2.0.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -24,11 +23,23 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-dependencies</artifactId>
+					<version>Finchley.SR1</version>
+					<type>pom</type>
+					<scope>import</scope>
+				</dependency>
+			</dependencies>
+	</dependencyManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
-		</dependency>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -37,17 +48,6 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR6</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>
