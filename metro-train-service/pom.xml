@@ -97,7 +97,10 @@
                     </configuration>
                   </execution>
                 </executions>
-          </plugin>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	
