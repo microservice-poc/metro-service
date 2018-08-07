@@ -27,7 +27,7 @@ application with following components of microservices                          
     -> infra - api gateway (entry point, security, etc..)                        -
                                                                                  -
 Integration                                                                      -
-    -> mysql database                                                            -
+    -> oracle XE database                                                            -
                                                                                  -
 ================================================================================ -
 Phase 2                                                                          -
