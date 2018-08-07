@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class RouteService {
@@ -22,26 +23,41 @@ public class RouteService {
         this.routeRepository = routeRepository;
     }
 	//-------------------------------------------------------------------------------------------
-    public List<RouteTO> getRoutesForDate(String date){
+    public List<RouteTO> getAllRoutes(){
         List<RouteTO> returnRoutes = new ArrayList<>();
         Iterable<Route> routes = this.routeRepository.findAll();
         
         routes.forEach(route->{
 			RouteTO routeTO = Util.convertEntityToDTO(route);
-			System.out.println("routeTO = "+routeTO);
+			//System.out.println("routeTO = "+routeTO);
 			returnRoutes.add(routeTO);
         });
 		
-		Route route = new Route();
-		route.setId(9999);
-		route.setStartingStationId(997);
-		route.setEndStationId(998);
-		route.setLastModifiedDate(new Date());
-		this.routeRepository.save(route);
+		//Route route = new Route();
+		//route.setId(9999);
+		//route.setStartingStationId(997);
+		//route.setEndStationId(998);
+		//route.setLastModifiedDate(new Date());
+		//this.routeRepository.save(route);
         
         return returnRoutes;
     }
 	//-------------------------------------------------------------------------------------------
+    public RouteTO getRouteById(long id){
+        Route route = this.routeRepository.findById(id).get();
+        RouteTO routeTO = Util.convertEntityToDTO(route);
+        //System.out.println("routeTO = "+routeTO);
+        
+        return routeTO;
+    }
+	//-------------------------------------------------------------------------------------------
+    public RouteTO saveRoute(RouteTO routeTO){
+        Route entity = Util.convertDTOToEntity(routeTO);
+        entity.setLastModifiedDate(new Date());
+        //System.out.println("RouteService.saveRoute():routeTO = "+routeTO);
+		Route entity2 = this.routeRepository.save(entity);
+        return Util.convertEntityToDTO(entity2);
+    }
 	//-------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------
