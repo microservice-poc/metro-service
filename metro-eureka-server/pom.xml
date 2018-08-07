@@ -26,16 +26,17 @@
 	</properties>
 
 	<dependencyManagement>
-			<dependencies>
-				<dependency>
-					<groupId>org.springframework.cloud</groupId>
-					<artifactId>spring-cloud-dependencies</artifactId>
-					<version>Finchley.SR1</version>
-					<type>pom</type>
-					<scope>import</scope>
-				</dependency>
-			</dependencies>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
+
 	
 	<dependencies>
 		<dependency>
@@ -76,20 +77,6 @@
 
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-=======
-
-
 	<build>
 		<plugins>
 			<plugin>
@@ -100,15 +87,6 @@
 					<mainClass>com.metroservice.eurekaserver.EurekaServerApplication</mainClass>
 					<addResources>true</addResources>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
                 <executions>
                   <execution>
                     <goals>
