@@ -39,6 +39,24 @@ public class RouteServiceController {
 		System.out.println("RouteServiceController.saveRoute():***dto="+dto);
     }
     //------------------------------------------------------------------------------------------------------------------------------
+    @RequestMapping(method= RequestMethod.DELETE, value="/route/{id}")
+    public void deleteRoute(@PathVariable(value="id")String id) throws Exception {
+		System.out.println("RouteServiceController.deleteRoute():***id="+id);
+		this.routeService.deleteRoute(Long.valueOf(id));
+		System.out.println("RouteServiceController.deleteRoute():***dto=");
+    }
+    //------------------------------------------------------------------------------------------------------------------------------
+    @RequestMapping(method= RequestMethod.DELETE, value="/route/deleteAll")
+    public void deleteAllRoutes() throws Exception {
+		System.out.println("RouteServiceController.deleteAllRoutes().enter");
+		this.routeService.deleteAllRoutes();
+		System.out.println("RouteServiceController.deleteAllRoutes().exit");
+    }
+    //------------------------------------------------------------------------------------------------------------------------------
+//    @RequestMapping(value = "/train/trainId/{trainId}", method = RequestMethod.DELETE)
+//    public void deleteTrainByTrainId(@PathVariable(value="trainId")String trainId) throws Exception {
+//		trainService.deleteTrainByTrainId(Long.valueOf(trainId));
+//	}
     //------------------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------------------
 }
