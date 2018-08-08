@@ -43,7 +43,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.boot.SpringApplication;
 import com.metroservice.route.RoutesApplication;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 //@WebMvcTest(RouteServiceController.class)
 //@DataJpaTest
 public class RouteServiceControllerTest {
@@ -55,49 +55,55 @@ public class RouteServiceControllerTest {
 //    //@Autowired 
 //    //private ObjectMapper objectMapper;
 //    
-//    //ConfigurableApplicationContext ctx;
-//	//-------------------------------------------------------------------------------------------
-//    @Before
-//    public void setup() {
-//		//System.out.println("**********************************************************************************************");
-//		//System.out.println("------------------- Starting RoutesApplication for JUnit testing -----------------------------");
-//		//System.out.println("**********************************************************************************************");
-//		//ctx = SpringApplication.run(RoutesApplication.class, new String[]{});
-//    }
-//	//-------------------------------------------------------------------------------------------
-//    @After
-//    public void destroy() {
-//		//System.out.println("**********************************************************************************************");
-//		//System.out.println("-------------------- Stopping RoutesApplication for JUnit testing ----------------------------");
-//		//System.out.println("**********************************************************************************************");
-//        //int exitCode = SpringApplication.exit(ctx, new ExitCodeGenerator() {
-//        //    @Override
-//        //    public int getExitCode() {
-//        //            return 0;
-//        //        }
-//        //});
-//    }
-//	//-------------------------------------------------------------------------------------------
-//    @Test
-//    public void getRoutes() throws Exception{
-//        
-//        //String uri = "";
-//        //RouteTO routeTO = null;
-//        //RestTemplate restTemplate = new RestTemplate();
-//        //
-//       	//uri = "http://localhost:8100/route/1";
-//        //routeTO = restTemplate.getForObject(uri, RouteTO.class);
-//		//System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
-//	    //
-//       	//uri = "http://localhost:8100/route/2";
-//        //routeTO = restTemplate.getForObject(uri, RouteTO.class);
-//		//System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
-//	    //
-//       	//uri = "http://localhost:8100/route/3";
-//        //routeTO = restTemplate.getForObject(uri, RouteTO.class);
-//		//System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
-//    }
-//	//-------------------------------------------------------------------------------------------
+	ConfigurableApplicationContext ctx;
+    //-------------------------------------------------------------------------------------------
+    @Before
+    public void setup() {
+		System.out.println("**********************************************************************************************");
+		System.out.println("------------------- Starting RoutesApplication for JUnit testing -----------------------------");
+		System.out.println("**********************************************************************************************");
+		List<String> list = new ArrayList<String>();
+		list.add("-Deureka.client.register-with-eureka=false");
+		list.add("-Deureka.client.fetch-registry=false");
+		list.add("-Deureka.server.enable-self-preservation=false");
+		String[] argArray = list.toArray(new String[list.size()]);
+		
+		ctx = SpringApplication.run(RoutesApplication.class, argArray);
+    }
+	//-------------------------------------------------------------------------------------------
+    @After
+    public void destroy() {
+		System.out.println("**********************************************************************************************");
+		System.out.println("-------------------- Stopping RoutesApplication for JUnit testing ----------------------------");
+		System.out.println("**********************************************************************************************");
+        int exitCode = SpringApplication.exit(ctx, new ExitCodeGenerator() {
+            @Override
+            public int getExitCode() {
+                    return 0;
+                }
+        });
+    }
+	//-------------------------------------------------------------------------------------------
+    @Test
+    public void getRoutes() throws Exception{
+        
+        String uri = "";
+        RouteTO routeTO = null;
+        RestTemplate restTemplate = new RestTemplate();
+        
+       	uri = "http://localhost:8100/route/1";
+        routeTO = restTemplate.getForObject(uri, RouteTO.class);
+		System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
+	    
+       	uri = "http://localhost:8100/route/2";
+        routeTO = restTemplate.getForObject(uri, RouteTO.class);
+		System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
+	    
+       	uri = "http://localhost:8100/route/3";
+        routeTO = restTemplate.getForObject(uri, RouteTO.class);
+		System.out.println("RouteServiceControllerTest.getRoutes() ************** = "+routeTO);
+    }
+	//-------------------------------------------------------------------------------------------
 //    @Test
 //    public void saveRoute() throws Exception {
 //        //RouteTO routeTO = new RouteTO();
