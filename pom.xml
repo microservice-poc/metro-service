@@ -11,5 +11,6 @@
     <module>metro-route-service</module>
     <module>metro-train-service</module>
 	<module>metro-scheduler-service</module>
+	<module>metro-userregistration-service</module>
   </modules>
 </project>
