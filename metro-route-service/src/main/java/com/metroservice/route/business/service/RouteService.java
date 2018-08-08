@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class RouteService {
@@ -24,6 +21,7 @@ public class RouteService {
     }
 	//-------------------------------------------------------------------------------------------
     public List<RouteTO> getAllRoutes(){
+		System.out.println("RouteService.getAllRoutes() ************** entering");
         List<RouteTO> returnRoutes = new ArrayList<>();
         Iterable<Route> routes = this.routeRepository.findAll();
         
@@ -32,18 +30,12 @@ public class RouteService {
 			//System.out.println("routeTO = "+routeTO);
 			returnRoutes.add(routeTO);
         });
-		
-		//Route route = new Route();
-		//route.setId(9999);
-		//route.setStartingStationId(997);
-		//route.setEndStationId(998);
-		//route.setLastModifiedDate(new Date());
-		//this.routeRepository.save(route);
         
         return returnRoutes;
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO getRouteById(long id){
+		System.out.println("RouteService.getRouteById() ************** entering");
         Route route = this.routeRepository.findById(id).get();
         RouteTO routeTO = Util.convertEntityToDTO(route);
         //System.out.println("routeTO = "+routeTO);
@@ -52,6 +44,7 @@ public class RouteService {
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO saveRoute(RouteTO routeTO){
+		System.out.println("RouteService.saveRoute() ************** entering");
         Route entity = Util.convertDTOToEntity(routeTO);
         entity.setLastModifiedDate(new Date());
         //System.out.println("RouteService.saveRoute():routeTO = "+routeTO);
