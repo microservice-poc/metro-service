@@ -98,7 +98,20 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+                <executions>
+                  <execution>
+                    <goals>
+                      <goal>repackage</goal>
+                    </goals>
+                    <configuration>
+                      <classifier>spring-boot</classifier>
+                    </configuration>
+                  </execution>
+                </executions>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>                
+          </plugin>
 		</plugins>
 	</build>
 
