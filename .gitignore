@@ -1,2 +1,8 @@
 target
 .settings
+eureka_server.log
+.classpath
+.project
+.mvn
+mvnw
+mvnw.cmd
