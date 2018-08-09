@@ -26,7 +26,7 @@ Phase 1
 ================================================================================
 Phase 2
 -------
-    -> infra - api gateway (zuul, basic) - Ravi, Krish
+    -> infra - api gateway (zuul, basic) - Ravi, Krish 
     -> business service - Replicate Train data to Scheduler schema(messaging, kafka) - Guru, Gangadhar
     -> infra - config server - Utilize Chef, Puppet, Ansible as appropriate
                 (To be able to start servers for different ENV based on different config parameters) - Shibu Akhil
