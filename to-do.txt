@@ -49,7 +49,13 @@ Phase 4
 
 
 ================================================================================
-
+Big picture
+-----------
+    -> Run multiple servers of Route(example) and work as cluster.  count should be increased in Eureka.
+       Test :- Demonstrate that different requests are going to different servers for processing.
+    -> Zuul - If multiple servers of Route is registered with Zuul, Is it required to make entries in Zuul's application.properties for each instance of Route?
+       Test :- Demonstrate that different requests sent to Zuul, are going to different servers for processing.
+    -> Security :- Krish, please update the test description here...
 
 
 ================================================================================
