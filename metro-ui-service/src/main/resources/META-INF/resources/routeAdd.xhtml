@@ -17,9 +17,6 @@
       <h:panelGrid columns="2" cellpadding="4">
         <h:outputText value="Route ID: " />
         <p:inputText id="routeId" value="#{routeBean.routeId}" />
-
-        <h:outputText value="Start Station : " />
-        <p:inputText id="startingStationId_x" value="#{routeBean.startingStationId}" />
 		
         <h:outputText value="Start Station : " />
 		<p:selectOneMenu id="startingStationId" value="#{routeBean.startingStationId}" style="width:150px">
@@ -27,10 +24,6 @@
 			<f:selectItems value="#{routeBean.stationList}" />
 		</p:selectOneMenu>
 			
-
-        <h:outputText value="End Station : " />
-        <p:inputText id="endStationId_x" value="#{routeBean.endStationId}" />
-
         <h:outputText value="End Station : " />
 		<p:selectOneMenu id="endStationId" value="#{routeBean.endStationId}" style="width:150px">
 			<f:selectItem itemLabel="Select End Station" itemValue="" noSelectionOption="true" />
@@ -38,14 +31,14 @@
 		</p:selectOneMenu>
 			
 
-        <p:commandButton id="submit" value="Save" actionListener="#{routeBean.routeSaveAction}" oncomplete="PF('greetingDialog').show()" />
+        <p:commandButton id="submit" value="Save" actionListener="#{routeBean.routeSaveAction}" oncomplete="PF('dialogSave').show()" />
       </h:panelGrid>
     </p:panel>
 
-    <p:dialog header="Route saved" widgetVar="greetingDialog" modal="true" resizable="false" showEffect="fade" closable="true" closeOnEscape="true" hideEffect="fade" >
+    <p:dialog header="Route saved" widgetVar="dialogSave" modal="true" resizable="false" showEffect="fade" closable="true" closeOnEscape="true" hideEffect="fade" >
       <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
         <h:outputText value="Route saved" />
-        <p:commandButton id="popup_close" value="OK" oncomplete="PF('greetingDialog').hide();" />
+        <p:commandButton id="popup_close" value="OK" oncomplete="PF('dialogSave').hide();" />
       </h:panelGrid>
     </p:dialog>
 
