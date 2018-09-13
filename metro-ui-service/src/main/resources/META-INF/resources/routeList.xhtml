@@ -24,13 +24,16 @@
         <f:facet name="header">
             Routes List
         </f:facet>				
-        <p:column headerText="Id" sortBy="#{routeTO.routeId}" >
+        <p:column headerText="RouteId" sortBy="#{routeTO.routeId}" >
             <h:outputText value="#{routeTO.routeId}" />
         </p:column>
-        <p:column headerText="Year" sortBy="#{routeTO.startingStationId}" >
+        <p:column headerText="RouteNumber" sortBy="#{routeTO.routeNumber}" >
+            <h:outputText value="#{routeTO.routeNumber}" />
+        </p:column>
+        <p:column headerText="Starting Station Id" sortBy="#{routeTO.startingStationId}" >
             <h:outputText value="#{routeTO.startingStationId}" />
         </p:column>
-        <p:column headerText="Brand" sortBy="#{routeTO.endStationId}" >
+        <p:column headerText="End Station Id" sortBy="#{routeTO.endStationId}" >
             <h:outputText value="#{routeTO.endStationId}" />
         </p:column>
     </p:dataTable>

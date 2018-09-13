@@ -13,7 +13,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
+import org.springframework.web.client.RestTemplate;
+
 import com.metroservice.ui.business.domain.RouteTO;
+import com.metroservice.ui.business.domain.RouteTOList;
 import com.metroservice.ui.business.domain.StationTO;
 
 @ManagedBean
@@ -21,6 +24,7 @@ import com.metroservice.ui.business.domain.StationTO;
 public class RouteBean {
 
     private long   routeId             ;
+    private String routeNumber         ;
     private long   startingStationId   ;
     private long   endStationId        ;
     private Date   lastModifiedDate    ;
@@ -39,6 +43,15 @@ public class RouteBean {
 			rto.setStartingStationId(100);
 			routeList.add(rto);
 		}
+		
+        String uri = "";
+        RouteTOList rtoList = null;
+        RestTemplate restTemplate = new RestTemplate();
+        
+       	uri = "http://localhost:8101/route/all";
+        rtoList = restTemplate.getForObject(uri, RouteTOList.class);
+		System.out.println("RouteBean.getAllRoutes() ************** = "+rtoList);
+		routeList = rtoList.getRouteList();
 
 		//populate station map
 		stationMap = new HashMap<String, String>();
@@ -58,8 +71,20 @@ public class RouteBean {
     
     public void routeSaveAction() {
     	System.out.println(routeId             );
+    	System.out.println(routeNumber         );
     	System.out.println(startingStationId   );
     	System.out.println(endStationId        );
+        
+		RouteTO routeTO = new RouteTO();
+        routeTO.setRouteId(routeId);
+        routeTO.setRouteNumber(routeNumber);
+        routeTO.setStartingStationId(startingStationId);
+        routeTO.setEndStationId(endStationId);
+        
+		RestTemplate restTemplate = new RestTemplate();
+		RouteTO response = restTemplate.postForObject("http://localhost:8101/route/save/", routeTO, RouteTO.class);
+		System.out.println("saveRoute="+response);
+
     }
 
     //--------------------------------------------------------------------------------
@@ -98,6 +123,14 @@ public class RouteBean {
 
 	public void setRouteId(long routeId) {
 		this.routeId = routeId;
+	}
+
+	public String getRouteNumber() {
+		return routeNumber;
+	}
+
+	public void setRouteNumber(String routeNumber) {
+		this.routeNumber = routeNumber;
 	}
 
 	public long getStartingStationId() {
