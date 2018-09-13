@@ -11,6 +11,7 @@ public class Util {
 	public static RouteTO convertEntityToDTO(Route entity) {
 		RouteTO to = new RouteTO();
 		to.setRouteId          (entity.getId               ());
+		to.setRouteNumber      (entity.getRouteNumber      ());
 		to.setStartingStationId(entity.getStartingStationId());
 		to.setEndStationId     (entity.getEndStationId     ());
 		to.setLastModifiedDate (entity.getLastModifiedDate ());
@@ -20,6 +21,7 @@ public class Util {
 	public static Route convertDTOToEntity(RouteTO to) {
 		Route entity = new Route();
 		entity.setId               (to.getRouteId          ());
+		entity.setRouteNumber      (to.getRouteNumber      ());
 		entity.setStartingStationId(to.getStartingStationId());
 		entity.setEndStationId     (to.getEndStationId     ());
 		entity.setLastModifiedDate (to.getLastModifiedDate ());

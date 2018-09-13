@@ -1,6 +1,7 @@
 package com.metroservice.route.web.service;
 
 import com.metroservice.route.business.domain.RouteTO;
+import com.metroservice.route.business.domain.RouteTOList;
 import com.metroservice.route.business.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +19,12 @@ public class RouteServiceController {
     private RouteService routeService;
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/route/all")
-    public List<RouteTO> getAllRoutes() throws Exception {
+    public RouteTOList getAllRoutes() throws Exception {
 		List<RouteTO> routes = this.routeService.getAllRoutes();
+		RouteTOList rtoList = new RouteTOList();
+		rtoList.setRouteList(routes);
 		System.out.println("RouteServiceController.getAllRoutes() ***routes="+routes);
-        return routes;
+        return rtoList;
     }
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/route/{id}")
