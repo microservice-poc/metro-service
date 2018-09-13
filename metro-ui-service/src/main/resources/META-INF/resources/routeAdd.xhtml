@@ -16,7 +16,7 @@
     <p:panel header="Metro Service - Route Add/Update">
       <h:panelGrid columns="2" cellpadding="4">
         <h:outputText value="Route ID: " />
-        <p:inputText id="routeId" value="#{routeBean.routeId}" />
+        <p:inputText id="routeId" value="#{routeBean.routeId}" readonly="#{facesContext.renderResponse}" />
 		
         <h:outputText value="Route Number: " />
         <p:inputText id="routeNumber" value="#{routeBean.routeNumber}" />
