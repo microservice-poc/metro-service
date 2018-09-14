@@ -1,5 +1,6 @@
 package com.metroservice.ui.business.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AccessLevel;
@@ -10,7 +11,7 @@ import lombok.Data;
 //@Getter @Setter 
 @Data
 public class RouteTOList {
-	private List<RouteTO> routeList ;
+	private List<RouteTO> routeList = new ArrayList<RouteTO>();
 
 //    public List<RouteTO> getRouteList() { 
 //		return routeList;
