@@ -57,8 +57,9 @@ public class RouteBean {
         RestTemplate restTemplate = new RestTemplate();
 
 		//------------------------------------------------------------------------------------
-		//populate station list
-       	uri = "http://localhost:8101/station/all";
+		//populate station list (API gateway URL is being used here)
+       	uri = "http://localhost:8901/station/all";
+		System.out.println("RouteBean.before call to : "+uri);
         stationTOList = restTemplate.getForObject(uri, StationTOList.class);
 		System.out.println("RouteBean.getAllStation() ************** = "+stationTOList);
 		stationList = stationTOList.getStationList();
@@ -76,8 +77,9 @@ public class RouteBean {
 			stationDropdownList.add(si); 
 		}
 		//------------------------------------------------------------------------------------
-		//populate route list
-       	uri = "http://localhost:8101/route/all";
+		//populate route list (API gateway URL is being used here)
+       	uri = "http://localhost:8901/route/all";
+		System.out.println("RouteBean.before call to : "+uri);
         rtoList = restTemplate.getForObject(uri, RouteTOList.class);
 		System.out.println("RouteBean.getAllRoutes() ************** = "+rtoList);
 		routeList = rtoList.getRouteList();
@@ -110,7 +112,8 @@ public class RouteBean {
         routeTO.setEndStationId(endStationId);
         
 		RestTemplate restTemplate = new RestTemplate();
-		RouteTO response = restTemplate.postForObject("http://localhost:8101/route/save/", routeTO, RouteTO.class);
+        // (API gateway URL is being used here)
+		RouteTO response = restTemplate.postForObject("http://localhost:8901/route/save/", routeTO, RouteTO.class);
 		System.out.println("saveRoute="+response);
 
     }
@@ -124,7 +127,8 @@ public class RouteBean {
         stationTO.setStationName(stationName);
         
 		RestTemplate restTemplate = new RestTemplate();
-		StationTO response = restTemplate.postForObject("http://localhost:8101/station/save/", stationTO, StationTO.class);
+        // (API gateway URL is being used here)
+		StationTO response = restTemplate.postForObject("http://localhost:8901/station/save/", stationTO, StationTO.class);
 		System.out.println("saveStation="+response);
     }
     //************************************************************************************
