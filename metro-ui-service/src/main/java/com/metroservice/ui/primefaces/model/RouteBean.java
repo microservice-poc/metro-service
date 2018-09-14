@@ -30,26 +30,26 @@ import lombok.Data;
 @ViewScoped
 public class RouteBean {
 
+	//RouteTO related
     private long   routeId             ;
     private String routeNumber         ;
     private long   startingStationId   ;
     private long   endStationId        ;
     private Date   lastModifiedDate    ;
-	private List<RouteTO> routeList = null;
+
+	//StationTO related
+    private long   stationId             ;
+    private String stationName           ;
+
+    
+    private List<RouteTO> routeList = null;
+    private List<StationTO> stationList = null;
 	private Map<String, String> stationMap = null;
-	private List<SelectItem> stationList;
+	private List<SelectItem> stationDropdownList;
 
     @PostConstruct
 	public void getAllRoutes() {
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		//populate routes with dummy values
-		//routeList = new ArrayList<RouteTO>();
-		//for(int i=0;i<20;i++) {
-		//	RouteTO rto = new RouteTO();
-		//	rto.setRouteId(i);
-		//	rto.setStartingStationId(100);
-		//	routeList.add(rto);
-		//}
 		
         String uri = "";
         RouteTOList rtoList = null;
@@ -61,19 +61,19 @@ public class RouteBean {
        	uri = "http://localhost:8101/station/all";
         stationTOList = restTemplate.getForObject(uri, StationTOList.class);
 		System.out.println("RouteBean.getAllStation() ************** = "+stationTOList);
-		List<StationTO> stationList1 = stationTOList.getStationList();
+		stationList = stationTOList.getStationList();
 
 		//populate station map for future lookup
 		stationMap = new HashMap<String, String>();
-		for(int i=0;i<stationList1.size();i++) {
-			stationMap.put(""+stationList1.get(i).getStationId(), stationList1.get(i).getStationName()); 
+		for(int i=0;i<stationList.size();i++) {
+			stationMap.put(""+stationList.get(i).getStationId(), stationList.get(i).getStationName()); 
 		}
 
 		//populate station list dropdown for UI
-		stationList = new ArrayList<SelectItem>();
-		for(int i=0;i<stationList1.size();i++) {
-			SelectItem si = new SelectItem(stationList1.get(i).getStationId(), stationList1.get(i).getStationName());
-			stationList.add(si); 
+		stationDropdownList = new ArrayList<SelectItem>();
+		for(int i=0;i<stationList.size();i++) {
+			SelectItem si = new SelectItem(stationList.get(i).getStationId(), stationList.get(i).getStationName());
+			stationDropdownList.add(si); 
 		}
 		//------------------------------------------------------------------------------------
 		//populate route list
@@ -94,9 +94,9 @@ public class RouteBean {
 
 		//------------------------------------------------------------------------------------
 
-
 	}
-    
+
+    //************************************************************************************
     public void routeSaveAction() {
     	System.out.println(routeId             );
     	System.out.println(routeNumber         );
@@ -114,74 +114,18 @@ public class RouteBean {
 		System.out.println("saveRoute="+response);
 
     }
-
-    //--------------------------------------------------------------------------------
-//	public List<RouteTO> getRouteList() {
-//		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX - getter");
-//		return routeList;
-//	}
-//
-//	public void setRouteList(List<RouteTO> routeList) {
-//		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX - setter");
-//
-//		this.routeList = routeList;
-//	}
-//
-//
-//	public Map<String, String> getStationMap() {
-//		return stationMap;
-//	}
-//
-//	public void setStationMap(Map<String, String> stationMap) {
-//		this.stationMap = stationMap;
-//	}
-//
-//	public List<SelectItem> getStationList() {
-//		return stationList;
-//	}
-//
-//	public void setStationList(List<SelectItem> stationList) {
-//		this.stationList = stationList;
-//	}
-//
-//    //--------------------------------------------------------------------------------
-//	public long getRouteId() {
-//		return routeId;
-//	}
-//
-//	public void setRouteId(long routeId) {
-//		this.routeId = routeId;
-//	}
-//
-//	public String getRouteNumber() {
-//		return routeNumber;
-//	}
-//
-//	public void setRouteNumber(String routeNumber) {
-//		this.routeNumber = routeNumber;
-//	}
-//
-//	public long getStartingStationId() {
-//		return startingStationId;
-//	}
-//
-//	public void setStartingStationId(long startingStationId) {
-//		this.startingStationId = startingStationId;
-//	}
-//
-//	public long getEndStationId() {
-//		return endStationId;
-//	}
-//
-//	public void setEndStationId(long endStationId) {
-//		this.endStationId = endStationId;
-//	}
-//
-//	public Date getLastModifiedDate() {
-//		return lastModifiedDate;
-//	}
-//
-//	public void setLastModifiedDate(Date lastModifiedDate) {
-//		this.lastModifiedDate = lastModifiedDate;
-//	}
+    //************************************************************************************
+    public void stationSaveAction() {
+    	System.out.println(stationId             );
+    	System.out.println(stationName           );
+        
+		StationTO stationTO = new StationTO();
+        stationTO.setStationId(stationId);
+        stationTO.setStationName(stationName);
+        
+		RestTemplate restTemplate = new RestTemplate();
+		StationTO response = restTemplate.postForObject("http://localhost:8101/station/save/", stationTO, StationTO.class);
+		System.out.println("saveStation="+response);
+    }
+    //************************************************************************************
 }

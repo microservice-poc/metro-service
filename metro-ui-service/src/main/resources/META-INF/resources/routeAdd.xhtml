@@ -24,13 +24,13 @@
         <h:outputText value="Start Station : " />
 		<p:selectOneMenu id="startingStationId" value="#{routeBean.startingStationId}" style="width:150px">
 			<f:selectItem itemLabel="Select Start Station" itemValue="" noSelectionOption="true" />
-			<f:selectItems value="#{routeBean.stationList}" />
+			<f:selectItems value="#{routeBean.stationDropdownList}" />
 		</p:selectOneMenu>
 			
         <h:outputText value="End Station : " />
 		<p:selectOneMenu id="endStationId" value="#{routeBean.endStationId}" style="width:150px">
 			<f:selectItem itemLabel="Select End Station" itemValue="" noSelectionOption="true" />
-			<f:selectItems value="#{routeBean.stationList}" />
+			<f:selectItems value="#{routeBean.stationDropdownList}" />
 		</p:selectOneMenu>
 			
 
