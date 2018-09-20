@@ -6,13 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Named;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import com.metroservice.ui.business.domain.RouteTO;
@@ -22,17 +21,16 @@ import com.metroservice.ui.business.domain.StationTOList;
 import com.metroservice.ui.business.domain.TrainTO;
 import com.metroservice.ui.business.domain.TrainTOList;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Data;
-
 //@Getter @Setter 
 @lombok.Data
 @ManagedBean
 @ViewScoped
 public class RouteBean {
 
+	
+	@Value("${APIGATEWAY.BASEURL}")
+	private String apiGatewayBaseUrl;	
+	
 	//RouteTO related
     private long   routeId             ;
     private String routeNumber         ;
@@ -69,7 +67,9 @@ public class RouteBean {
 
 		//------------------------------------------------------------------------------------
 		//populate station list (API gateway URL is being used here)
-       	uri = "http://localhost:8901/station/all";
+        
+        System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
+       	uri = apiGatewayBaseUrl+"/station/all";
 		System.out.println("RouteBean.before call to : "+uri);
         stationTOList = restTemplate.getForObject(uri, StationTOList.class);
 		System.out.println("RouteBean.getAllStation() ************** = "+stationTOList);
@@ -89,7 +89,7 @@ public class RouteBean {
 		}
 		//------------------------------------------------------------------------------------
 		//populate route list (API gateway URL is being used here)
-       	uri = "http://localhost:8901/route/all";
+       	uri = apiGatewayBaseUrl+"/route/all";
 		System.out.println("RouteBean.before call to : "+uri);
         rtoList = restTemplate.getForObject(uri, RouteTOList.class);
 		System.out.println("RouteBean.getAllRoutes() ************** = "+rtoList);
@@ -107,23 +107,12 @@ public class RouteBean {
 
 		//------------------------------------------------------------------------------------
 		//populate train list (API gateway URL is being used here)
-       	uri = "http://localhost:8901/trains";
+       	uri = apiGatewayBaseUrl+"/trains";
 		System.out.println("RouteBean.before call to : "+uri);
 		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
 		System.out.println("RouteBean.trains= ************** = "+trainTOList);
 		trainList = trainTOList.getTrainList();
-		//now populate the station names for their Ids
-//		for(int i=0;i<trainList.size();i++) {
-//			TrainTO trainTO = trainList.get(i);
-//			long trainId = trainTO.getTrainId();
-//			String trainName = trainTO.getTrainName();
-//			long trainNumber = trainTO.getTrainNumber();
-//			String startingStationName = stationMap.get(""+startingStationId);
-//			trainTO.setStartingStationName(startingStationName);
-//			long endStationId = trainTO.getEndStationId();
-//			String endStationName = stationMap.get(""+endStationId);
-//			trainTO.setEndStationName(endStationName);
-//		}
+
 		//populate train list dropdown for UI
 		trainDropdownList = new ArrayList<SelectItem>();
 		for(int i=0;i<trainList.size();i++) {
@@ -150,7 +139,7 @@ public class RouteBean {
         
 		RestTemplate restTemplate = new RestTemplate();
         // (API gateway URL is being used here)
-		RouteTO response = restTemplate.postForObject("http://localhost:8901/route/save/", routeTO, RouteTO.class);
+		RouteTO response = restTemplate.postForObject(apiGatewayBaseUrl+"/route/save/", routeTO, RouteTO.class);
 		System.out.println("saveRoute="+response);
 
     }
@@ -165,7 +154,7 @@ public class RouteBean {
         
 		RestTemplate restTemplate = new RestTemplate();
         // (API gateway URL is being used here)
-		StationTO response = restTemplate.postForObject("http://localhost:8901/station/save/", stationTO, StationTO.class);
+		StationTO response = restTemplate.postForObject(apiGatewayBaseUrl+"/station/save/", stationTO, StationTO.class);
 		System.out.println("saveStation="+response);
     }
     //************************************************************************************

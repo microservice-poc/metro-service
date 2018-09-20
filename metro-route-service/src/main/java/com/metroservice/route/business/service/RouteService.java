@@ -5,6 +5,8 @@ import com.metroservice.route.business.util.Util;
 import com.metroservice.route.data.entity.Route;
 import com.metroservice.route.data.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,7 +15,10 @@ import java.util.List;
 
 @Service
 public class RouteService {
-    private RouteRepository  routeRepository;
+	@Autowired
+	private DiscoveryClient discoveryClient;
+	
+	private RouteRepository  routeRepository;
 
     @Autowired
     public RouteService(RouteRepository routeRepository) {
@@ -30,6 +35,14 @@ public class RouteService {
 			//System.out.println("routeTO = "+routeTO);
 			returnRoutes.add(routeTO);
         });
+        
+		System.out.println("RouteService.getAllRoutes() ************** discoveryClient="+discoveryClient);
+    	List<ServiceInstance> instances=discoveryClient.getInstances("METRO-TRAIN-SERVICE");
+		System.out.println("RouteService.getAllRoutes() ************** instances="+instances);
+		ServiceInstance serviceInstance=instances.get(0);
+		
+		String baseUrl=serviceInstance.getUri().toString();        
+		System.out.println("RouteService.getAllRoutes() ************** baseUrl="+baseUrl);
         
         return returnRoutes;
     }
