@@ -33,6 +33,12 @@
 			<f:selectItems value="#{routeBean.stationDropdownList}" />
 		</p:selectOneMenu>
 			
+        <h:outputText value="Train To Use : " />
+		<p:selectOneMenu id="trainId" value="#{routeBean.trainId}" style="width:150px">
+			<f:selectItem itemLabel="Select Train " itemValue="" noSelectionOption="true" />
+			<f:selectItems value="#{routeBean.trainDropdownList}" />
+		</p:selectOneMenu>
+			
 
         <p:commandButton id="submit" value="Save" actionListener="#{routeBean.routeSaveAction}" oncomplete="PF('dialogSave').show()" />
       </h:panelGrid>

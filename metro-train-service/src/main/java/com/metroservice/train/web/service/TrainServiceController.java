@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metroservice.train.business.domain.TrainTO;
+import com.metroservice.train.business.domain.TrainTOList;
 import com.metroservice.train.business.service.TrainService;
 
 @RestController
@@ -19,11 +20,13 @@ public class TrainServiceController {
     private TrainService trainService;
 
     @RequestMapping(method= RequestMethod.GET, value="/trains")
-    public List<TrainTO> getAllTrains() throws Exception {
+    public TrainTOList getAllTrains() throws Exception {
 		System.out.println("getAllTrains**********************trainService*******************************************="+trainService);
 		List<TrainTO> trainsListTo = trainService.getAllTrains();
+        TrainTOList ttolist = new TrainTOList();
+        ttolist.setTrainList(trainsListTo);
 		System.out.println("All trains======================================"+trainsListTo);
-        return trainsListTo;
+        return ttolist;
     }
     
     @RequestMapping(method= RequestMethod.GET, value="/train/trainId/{trainId}")

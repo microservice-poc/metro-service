@@ -19,6 +19,9 @@ import com.metroservice.ui.business.domain.RouteTO;
 import com.metroservice.ui.business.domain.RouteTOList;
 import com.metroservice.ui.business.domain.StationTO;
 import com.metroservice.ui.business.domain.StationTOList;
+import com.metroservice.ui.business.domain.TrainTO;
+import com.metroservice.ui.business.domain.TrainTOList;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,17 +38,24 @@ public class RouteBean {
     private String routeNumber         ;
     private long   startingStationId   ;
     private long   endStationId        ;
+    private long   trainId             ;
     private Date   lastModifiedDate    ;
 
 	//StationTO related
     private long   stationId             ;
     private String stationName           ;
 
+	//TrainTO related
+    //private long   trainId             ;
+    //private String trainName           ;
+
     
     private List<RouteTO> routeList = null;
     private List<StationTO> stationList = null;
+    private List<TrainTO> trainList = null;
 	private Map<String, String> stationMap = null;
 	private List<SelectItem> stationDropdownList;
+	private List<SelectItem> trainDropdownList;
 
     @PostConstruct
 	public void getAllRoutes() {
@@ -54,6 +64,7 @@ public class RouteBean {
         String uri = "";
         RouteTOList rtoList = null;
         StationTOList stationTOList = null;
+        TrainTOList trainTOList = null;
         RestTemplate restTemplate = new RestTemplate();
 
 		//------------------------------------------------------------------------------------
@@ -92,6 +103,32 @@ public class RouteBean {
 			long endStationId = rto.getEndStationId();
 			String endStationName = stationMap.get(""+endStationId);
 			rto.setEndStationName(endStationName);
+		}
+
+		//------------------------------------------------------------------------------------
+		//populate train list (API gateway URL is being used here)
+       	uri = "http://localhost:8901/trains";
+		System.out.println("RouteBean.before call to : "+uri);
+		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
+		System.out.println("RouteBean.trains= ************** = "+trainTOList);
+		trainList = trainTOList.getTrainList();
+		//now populate the station names for their Ids
+//		for(int i=0;i<trainList.size();i++) {
+//			TrainTO trainTO = trainList.get(i);
+//			long trainId = trainTO.getTrainId();
+//			String trainName = trainTO.getTrainName();
+//			long trainNumber = trainTO.getTrainNumber();
+//			String startingStationName = stationMap.get(""+startingStationId);
+//			trainTO.setStartingStationName(startingStationName);
+//			long endStationId = trainTO.getEndStationId();
+//			String endStationName = stationMap.get(""+endStationId);
+//			trainTO.setEndStationName(endStationName);
+//		}
+		//populate train list dropdown for UI
+		trainDropdownList = new ArrayList<SelectItem>();
+		for(int i=0;i<trainList.size();i++) {
+			SelectItem si = new SelectItem(trainList.get(i).getTrainId(), trainList.get(i).getTrainNumber() + " - " + trainList.get(i).getTrainName());
+			trainDropdownList.add(si); 
 		}
 
 		//------------------------------------------------------------------------------------

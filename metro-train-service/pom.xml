@@ -75,6 +75,12 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/ojdbc7-12.1.0.2.jar</systemPath>
       </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+			<scope>provided</scope>
+		</dependency>
      
         
 	 <dependency>
