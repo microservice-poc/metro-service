@@ -1,0 +1,47 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.doubleclick.net	TRUE	/	FALSE	1595540679	IDE	AHWqTUmjIERLPKUAFeAHSCjqXCROASFastgIRri9kGSH8tDUxnxo-GIXrn9ysQWg
+.github.com	TRUE	/	FALSE	1595540663	_ga	GA1.2.1704740607.1532468664
+.github.com	TRUE	/	FALSE	1595627066	_octo	GH1.1.1090987914.1532468666
+.github.com	TRUE	/	TRUE	2163620666	logged_in	no
+.google.co.in	TRUE	/	FALSE	1548279858	NID	135=oZkzukH6Tpy5baCbi90JBZQvQKx4a-dIXKWjf7_PDaajjIQCLMSk6f35D6Pe1UMMwrvN93Y9KfAHZwaB9_WE94bA5AhjZ4BxBlRMKBmp-mbylv2lJ0nAYGB0WnpfdPO4
+.google.com	TRUE	/	FALSE	1548542391	NID	135=WMzLYXyHya2c5k-1eQSGGFZ7_OmUy2wganS10WLqjBvNMzMe6xBccbpMiEykVi65snYRDDp1IeSpVHq_cplee-alFxd8YZtXAgib8ZFexdh32TBv9XbC6ilnPYW95cX6
+.google.com	TRUE	/complete/search	FALSE	1548247131	CGIC	CgxmaXJlZm94LWItYWIiP3RleHQvaHRtbCxhcHBsaWNhdGlvbi94aHRtbCt4bWwsYXBwbGljYXRpb24veG1sO3E9MC45LCovKjtxPTAuOA
+.google.com	TRUE	/search	FALSE	1548247131	CGIC	CgxmaXJlZm94LWItYWIiP3RleHQvaHRtbCxhcHBsaWNhdGlvbi94aHRtbCt4bWwsYXBwbGljYXRpb24veG1sO3E9MC45LCovKjtxPTAuOA
+.google.com	TRUE	/verify	TRUE	1548020661	SNID	AGRGHO7MB_LU4rAnmt5N01obApSwXwntjPg-x_RaVBX2QKiw8mvew5DDy_QogCdtMPR4p3JOR9ik_Ba0O2No
+.imgur.com	TRUE	/	FALSE	1564004676	__cfduid	d64fa5d053b99076de3950425502b57561532468676
+.linkedin.com	TRUE	/	FALSE	1595580906	bcookie	"v=2&efa9c8d0-e1a6-428a-88a3-dec0e2debc0d"
+.lynda.com	TRUE	/	FALSE	1848350447	LyndaLoginStatus	Member-Not-Logged-In
+.lynda.com	TRUE	/	FALSE	1595803236	_ga	GA1.2.1709842276.1532467019
+.lynda.com	TRUE	/	FALSE	1548632656	throttle-20fc2dfb0a81016faeebb960e94da216	1
+.lynda.com	TRUE	/	FALSE	1548632448	throttle-2b03d60a3a4380742663b5f4066e4d2a	1
+.lynda.com	TRUE	/	FALSE	1548369483	throttle-3c6decaab331b0e589231f32fc4b9a84	1
+.lynda.com	TRUE	/	FALSE	1548632656	throttle-54c678a5add39d58a7d7411cae569603	1
+.lynda.com	TRUE	/	FALSE	1548632420	throttle-7566ffb605d4cb8c15225d8859a6efd3	1
+.lynda.com	TRUE	/	FALSE	1548632448	throttle-81caf7c4bbc10c18b29b105cfcbcdbee	1
+.lynda.com	TRUE	/	FALSE	1548369500	throttle-85975e5888b0a2a3d27c273fd5637879	1
+.lynda.com	TRUE	/	FALSE	1548632394	throttle-9620ede73ab0b3b8d0fe1e62763ad939	1
+.lynda.com	TRUE	/	FALSE	1548632394	throttle-ad15fee1459e8f3e1ae3d8d711f77883	1
+.lynda.com	TRUE	/	FALSE	1548632448	throttle-b8b1cb3ef236f57532c515db9614be44	1
+.lynda.com	TRUE	/	FALSE	1551185840	throttle-b8b96eed8d81f42a88aadaadc5139c25	1
+.lynda.com	TRUE	/	FALSE	1548369500	throttle-bf01e020137cb85eaa7a5e6a2f331834	1
+.lynda.com	TRUE	/	FALSE	1548369500	throttle-cb8048294d8a62ec98a5d38754e4a964	1
+.lynda.com	TRUE	/	FALSE	1548369505	throttle-cc6e24142c9b2f691b86349a86409bdb	1
+.lynda.com	TRUE	/	FALSE	1548632451	throttle-d3ebbd09ec7ecff8c4948ff79599614d	1
+.lynda.com	TRUE	/	FALSE	1548402735	throttle-e0cb8e4541d2401ae2437d4836b8d8cd	1
+.lynda.com	TRUE	/	FALSE	1548369500	throttle-fcc41b5952df7ea0746eff3c71b72bc7	1
+.lynda.com	TRUE	/	FALSE	1564267197	utag_main	v_id:0164ce26ff2c000fa2b07a62f0ef0104d001600d0086e$_sn:3$_ss:0$_st:1532732997818$_pn:2%3Bexp-session$ses_id:1532731193294%3Bexp-session
+.mozilla.org	TRUE	/	FALSE	1595538718	_ga	GA1.2.1285730984.1532466718
+.stackoverflow.com	TRUE	/	FALSE	1595540679	__gads	ID=d7e8d66496729cd8:T=1532468679:S=ALNI_MYNkXV1AamSHygtpPuVhozvMIuHsQ
+.stackoverflow.com	TRUE	/	FALSE	2682374400	prov	63388de3-609f-5d22-f3bb-4f162753f6ef
+.www.linkedin.com	TRUE	/	TRUE	1595580906	bscookie	"v=1&2018072421173458bcbeed-9027-4e22-8bbf-98d026ebd7c8AQH6lS2MRJ6H70J7yP--0ZJ-k1Nnsl3E"
+www.lynda.com	FALSE	/	FALSE	1848350447	LyndaAccess	LyndaAccess=7/27/2018 3:40:47 PM&p=0&data=9,12/31/2018,1,94434
+www.lynda.com	FALSE	/	FALSE	1537915247	SSOLogin	OrgUrl=https%3A%2F%2Fshib.lynda.com%2FShibboleth.sso%2FInCommon%3FproviderId%3Dhttps%3A%2F%2Flogin.oracle.com%2Foam%2Ffed%26target%3Dhttps%3A%2F%2Fshib.lynda.com%2FInCommon&OrgName=Oracle%20Corporation
+www.lynda.com	FALSE	/	FALSE	1595580758	bcookie	79200428320c44e88a631b6f8365d4ff304c1db9c12c4c2f879008a82a0106b3
+www.lynda.com	FALSE	/	FALSE	1537963040	litrk-srcveh	srcValue=direct/none&vehValue=direct/none&prevSrc=&prevVeh=
+www.lynda.com	FALSE	/	FALSE	1564267238	player	%7B%22volume%22%3A0.8%2C%22muted%22%3Afalse%7D
+www.lynda.com	FALSE	/	FALSE	1537012640	player_settings_0_1	player_type=2&video_format=2&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=0&reset_on_plugins=True
+www.lynda.com	FALSE	/	FALSE	1627162706	tcookie	2212bcc3-156a-464d-b3ab-69f1e854117b
+www.lynda.com	FALSE	/	TRUE	1535292164	token	bbffdee5-c785-4c49-a800-b4344559286f,5b20aa7eb9bf280aa699f0192d990f8c,Ef2s95a2AWZy7KXYfsgMvGTBvwkJWyBZrSCTfHAEeNC2rd9Q9/j1/zuUc7T0fsMNDUjZLJCq6Xi928QIpB+ahQ==
