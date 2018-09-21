@@ -1,0 +1,43 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.baeldung.com	TRUE	/	TRUE	1569063770	__cfduid	dcb91d95b957690dc7c6d57b93ab2ddd61537527693
+.github.com	TRUE	/	FALSE	1600689704	_octo	GH1.1.669142203.1537531228
+.github.com	TRUE	/	TRUE	2168683304	logged_in	no
+.google.co.in	TRUE	/	FALSE	1540119771	1P_JAR	2018-09-21-11
+.google.co.in	TRUE	/	FALSE	1553338968	NID	139=GSpL_r2hUKIwk1R1tKdgVnsfgNtO4lKbNbxt3gB6RkFpswAOH6wZU3n84fw2GfpVhEKUy8QLaowG2GGU_yaSmQoCfSS5nsDnkc-fDtpr3SUASQIB_IqYKWLZ225XphOtQ2ZXxN_7FyAa
+.google.co.in	TRUE	/complete/search	FALSE	1553306243	CGIC	Ikp0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS93ZWJwLCovKjtxPTAuOA
+.google.co.in	TRUE	/search	FALSE	1553306243	CGIC	Ikp0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS93ZWJwLCovKjtxPTAuOA
+.google.com	TRUE	/	FALSE	1553333351	NID	139=k3ZZKLdgyEvttRff7ZQO9SwmlGCNycgGNfSFDt1g7X4i9VPfEnKDPatY4yMm5hk7Gn1WLLapmx3HET9FGAWRXtZYEQxz3VCq02s5v-pInDKbPF8vhGf39RibcUtaBWxC
+.lynda.com	TRUE	/	FALSE	1853153495	LyndaLoginStatus	Member-Logged-In
+.lynda.com	TRUE	/	FALSE	1553172761	throttle-20fc2dfb0a81016faeebb960e94da216	1
+.lynda.com	TRUE	/	FALSE	1553172697	throttle-2b03d60a3a4380742663b5f4066e4d2a	1
+.lynda.com	TRUE	/	FALSE	1553172697	throttle-3c6decaab331b0e589231f32fc4b9a84	1
+.lynda.com	TRUE	/	FALSE	1553172761	throttle-47481a8f590db61e7b4703e070ade640	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-54c678a5add39d58a7d7411cae569603	1
+.lynda.com	TRUE	/	FALSE	1553178380	throttle-7f0c15d211a720cccfeff5e84db0ec6e	1
+.lynda.com	TRUE	/	FALSE	1553172697	throttle-81caf7c4bbc10c18b29b105cfcbcdbee	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-85975e5888b0a2a3d27c273fd5637879	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-9ecc4e578ac856334c0a44bd43f10619	1
+.lynda.com	TRUE	/	FALSE	1553172761	throttle-a5ca6acbd2f547f2914c0b113231bee3	1
+.lynda.com	TRUE	/	FALSE	1553172698	throttle-b8b1cb3ef236f57532c515db9614be44	1
+.lynda.com	TRUE	/	FALSE	1553172695	throttle-b8b96eed8d81f42a88aadaadc5139c25	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-bf01e020137cb85eaa7a5e6a2f331834	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-cb8048294d8a62ec98a5d38754e4a964	1
+.lynda.com	TRUE	/	FALSE	1553172764	throttle-d3ebbd09ec7ecff8c4948ff79599614d	1
+.lynda.com	TRUE	/	FALSE	1553172760	throttle-fcc41b5952df7ea0746eff3c71b72bc7	1
+.oracle.com	TRUE	/	FALSE	1695300689	s_fid	6DFC1F6210EDA13A-0A564835949B98F2
+.oracle.com	TRUE	/	FALSE	1540126289	s_nr	1537534289652-New
+.stackoverflow.com	TRUE	/	FALSE	2682374477	prov	a3829fb3-51e2-cf51-d66e-9dccbb0fd5f5
+www.lynda.com	FALSE	/	FALSE	1853153495	LyndaAccess	LyndaAccess=9/21/2018 5:50:18 AM&p=0&data=9,12/31/2018,1,94434
+www.lynda.com	FALSE	/	TRUE	1537540280	NSC_tw5_xxx-iuuqt_wt	ffffffff096e9e2845525d5f4f58455e445a4a423661
+www.lynda.com	FALSE	/	FALSE	1542721896	SSOLogin	OrgUrl=https%3A%2F%2Fshib.lynda.com%2FShibboleth.sso%2FInCommon%3FproviderId%3Dhttps%3A%2F%2Flogin.oracle.com%2Foam%2Ffed%26target%3Dhttps%3A%2F%2Fshib.lynda.com%2FInCommon&OrgName=Oracle%20Corporation
+www.lynda.com	FALSE	/	FALSE	1600648146	bcookie	59dc5aaa2cda4965a6ab60a4a22f308729031775814a44778ec2d6fb9b986df7
+www.lynda.com	FALSE	/	FALSE	1540131980	litrk-srcveh	srcValue=direct/none&vehValue=direct/none&prevSrc=&prevVeh=
+www.lynda.com	FALSE	/	FALSE	1539262296	player_settings_0_7	player_type=2&video_format=2&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=0&reset_on_plugins=True
+www.lynda.com	FALSE	/	FALSE	1539262297	player_settings_11465930_1	player_type=2&video_format=2&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=540
+www.lynda.com	FALSE	/	FALSE	1539262308	player_settings_11465930_2	player_type=2&video_format=1&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=540
+www.lynda.com	FALSE	/	FALSE	1539262353	player_settings_11465930_3	player_type=2&video_format=2&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=540
+www.lynda.com	FALSE	/	FALSE	1539262296	player_settings_11465930_7	player_type=2&video_format=2&cc_status=2&window_extra_height=148&volume_percentage=50&resolution=540
+www.lynda.com	FALSE	/	TRUE	1537554176	token	2bb8e56e-34c6-4017-926f-88a1a4bf2be1,a3c094fe5bde637fb88e07fece79288e,wkpx8F6/NoVtvAAlAV+Vij88FHvTvDwcfcmZ5Ob1e5V5WIno/hohZ+K7dfLV/9WhdU79HyL69NE7Ic8Qvu4c/QKpxh434PPtB+0ZHe/7FZy9SSl72VMZ2a5uHYoE+aXX45scCeVIzsbaMrGtvH5KIA==
