@@ -3,6 +3,7 @@ package com.metroservice.train.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,10 @@ public class TrainServiceController {
 
     @Autowired
     private TrainService trainService;
-
+    @Autowired
+	private KafkaTemplate<String,TrainTO> kafkaTemplate;
+	private static final String TOPIC="train_topic";
+	
     @RequestMapping(method= RequestMethod.GET, value="/trains")
     public TrainTOList getAllTrains() throws Exception {
 		System.out.println("getAllTrains**********************trainService*******************************************="+trainService);
@@ -53,6 +57,7 @@ public class TrainServiceController {
     public void addTrain(@RequestBody TrainTO trainTO) throws Exception {
 		System.out.println("TrainServiceController.saveTrain():***trainTO="+trainTO);
 		TrainTO retTrainTo = trainService.addTrain(trainTO);
+		kafkaTemplate.send(TOPIC, retTrainTo);
 		System.out.println("TrainServiceController.saveRoute():***retTrainTo="+retTrainTo);
     }
     
