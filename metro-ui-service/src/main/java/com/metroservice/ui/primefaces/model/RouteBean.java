@@ -95,6 +95,9 @@ public class RouteBean {
 		}
 		//------------------------------------------------------------------------------------
 		//populate route list (API gateway URL is being used here)
+		if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
+        	apiGatewayBaseUrl = "http://localhost:8901";
+        }
        	uri = apiGatewayBaseUrl+"/route/all";
 		System.out.println("RouteBean.before call to : "+uri);
         rtoList = restTemplate.getForObject(uri, RouteTOList.class);
@@ -113,6 +116,9 @@ public class RouteBean {
 
 		//------------------------------------------------------------------------------------
 		//populate train list (API gateway URL is being used here)
+		if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
+        	apiGatewayBaseUrl = "http://localhost:8901";
+        }
        	uri = apiGatewayBaseUrl+"/trains";
 		System.out.println("RouteBean.before call to : "+uri);
 		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
