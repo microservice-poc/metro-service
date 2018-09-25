@@ -26,25 +26,30 @@ public class RouteService {
     }
 	//-------------------------------------------------------------------------------------------
     public List<RouteTO> getAllRoutes(){
-		System.out.println("RouteService.getAllRoutes() ************** entering");
-        List<RouteTO> returnRoutes = new ArrayList<>();
-        Iterable<Route> routes = this.routeRepository.findAll();
-        
-        routes.forEach(route->{
-			RouteTO routeTO = Util.convertEntityToDTO(route);
-			//System.out.println("routeTO = "+routeTO);
-			returnRoutes.add(routeTO);
-        });
-        
-		System.out.println("RouteService.getAllRoutes() ************** discoveryClient="+discoveryClient);
-    	List<ServiceInstance> instances=discoveryClient.getInstances("METRO-TRAIN-SERVICE");
-		System.out.println("RouteService.getAllRoutes() ************** instances="+instances);
-		ServiceInstance serviceInstance=instances.get(0);
-		
-		String baseUrl=serviceInstance.getUri().toString();        
-		System.out.println("RouteService.getAllRoutes() ************** baseUrl="+baseUrl);
-        
-        return returnRoutes;
+		try {
+			System.out.println("RouteService.getAllRoutes() ************** entering");
+			List<RouteTO> returnRoutes = new ArrayList<>();
+			Iterable<Route> routes = this.routeRepository.findAll();
+			
+			routes.forEach(route->{
+				RouteTO routeTO = Util.convertEntityToDTO(route);
+				//System.out.println("routeTO = "+routeTO);
+				returnRoutes.add(routeTO);
+			});
+			
+			System.out.println("RouteService.getAllRoutes() ************** discoveryClient="+discoveryClient);
+			List<ServiceInstance> instances=discoveryClient.getInstances("METRO-TRAIN-SERVICE");
+			System.out.println("RouteService.getAllRoutes() ************** instances="+instances);
+			ServiceInstance serviceInstance=instances.get(0);
+			String baseUrl=serviceInstance.getUri().toString(); 
+			       
+			System.out.println("RouteService.getAllRoutes() ************** baseUrl="+baseUrl);
+			
+			return returnRoutes;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
     }
 	//-------------------------------------------------------------------------------------------
     public RouteTO getRouteById(long id){

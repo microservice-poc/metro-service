@@ -12,8 +12,10 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
+import com.ctc.wstx.util.StringUtil;
 import com.metroservice.ui.business.domain.RouteTO;
 import com.metroservice.ui.business.domain.RouteTOList;
 import com.metroservice.ui.business.domain.StationTO;
@@ -69,6 +71,10 @@ public class RouteBean {
 		//populate station list (API gateway URL is being used here)
         
         System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
+        if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
+        	apiGatewayBaseUrl = "http://localhost:8901";
+        }
+       
        	uri = apiGatewayBaseUrl+"/station/all";
 		System.out.println("RouteBean.before call to : "+uri);
         stationTOList = restTemplate.getForObject(uri, StationTOList.class);
@@ -111,14 +117,19 @@ public class RouteBean {
 		System.out.println("RouteBean.before call to : "+uri);
 		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
 		System.out.println("RouteBean.trains= ************** = "+trainTOList);
-		trainList = trainTOList.getTrainList();
-
+		if(trainTOList != null) {
+			trainList = trainTOList.getTrainList();
+		}
+		
 		//populate train list dropdown for UI
 		trainDropdownList = new ArrayList<SelectItem>();
-		for(int i=0;i<trainList.size();i++) {
-			SelectItem si = new SelectItem(trainList.get(i).getTrainId(), trainList.get(i).getTrainNumber() + " - " + trainList.get(i).getTrainName());
-			trainDropdownList.add(si); 
+		if(trainList != null) {
+			for(int i=0;i<trainList.size();i++) {
+				SelectItem si = new SelectItem(trainList.get(i).getTrainId(), trainList.get(i).getTrainNumber() + " - " + trainList.get(i).getTrainName());
+				trainDropdownList.add(si); 
+			}
 		}
+		
 
 		//------------------------------------------------------------------------------------
 
