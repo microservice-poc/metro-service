@@ -11,6 +11,7 @@
     <module>metro-train-service</module>
     <module>metro-ui-service</module>
     <module>metro-zuul-service</module>
+    <module>metro-scheduler-consumer</module>
     <!--
     <module>metro-scheduler-service</module>
     <module>metro-userregistration-service</module>
