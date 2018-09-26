@@ -8,10 +8,12 @@
     <module>metro-config-server</module>
     <module>metro-eureka-server</module>
     <module>metro-route-service</module>
-    <module>metro-scheduler-service</module>
     <module>metro-train-service</module>
     <module>metro-ui-service</module>
-    <module>metro-userregistration-service</module>
     <module>metro-zuul-service</module>
+    <!--
+    <module>metro-scheduler-service</module>
+    <module>metro-userregistration-service</module>
+    -->
   </modules>
 </project>
