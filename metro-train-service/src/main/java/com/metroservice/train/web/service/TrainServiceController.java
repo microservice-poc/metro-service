@@ -3,6 +3,7 @@ package com.metroservice.train.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,8 @@ public class TrainServiceController {
     private TrainService trainService;
     @Autowired
 	private KafkaTemplate<String,TrainTO> kafkaTemplate;
-	private static final String TOPIC="train_topic";
+    @Value("${kafka.train.topic}")
+    private String TOPIC;
 	
     @RequestMapping(method= RequestMethod.GET, value="/trains")
     public TrainTOList getAllTrains() throws Exception {
