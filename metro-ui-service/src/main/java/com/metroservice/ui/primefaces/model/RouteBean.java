@@ -128,7 +128,7 @@ public class RouteBean extends SpringBeanAutowiringSupport{
        	uri = apiGatewayBaseUrl+"/trains";
 		System.out.println("RouteBean.before call to : "+uri);
 		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
-		System.out.println("RouteBean.trains.count= ************** = "+trainTOList.getTrainList().size());
+		//System.out.println("RouteBean.trains.count= ************** = "+trainTOList.getTrainList().size());
 		if(trainTOList != null) {
 			trainList = trainTOList.getTrainList();
 		}
