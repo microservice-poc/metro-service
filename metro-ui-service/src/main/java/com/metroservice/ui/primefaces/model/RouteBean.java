@@ -7,15 +7,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.ctc.wstx.util.StringUtil;
 import com.metroservice.ui.business.domain.RouteTO;
 import com.metroservice.ui.business.domain.RouteTOList;
 import com.metroservice.ui.business.domain.StationTO;
@@ -25,12 +28,12 @@ import com.metroservice.ui.business.domain.TrainTOList;
 
 //@Getter @Setter 
 @lombok.Data
-@ManagedBean
+//@ManagedBean
 @ViewScoped
-public class RouteBean {
+@Controller
+public class RouteBean extends SpringBeanAutowiringSupport{
 
-	
-	@Value("${APIGATEWAY.BASEURL}")
+	@Value("${APIGATEWAY.BASEURL}") //working because of @Controller
 	private String apiGatewayBaseUrl;	
 	
 	//RouteTO related
@@ -72,13 +75,14 @@ public class RouteBean {
         
         System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
         if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
-        	apiGatewayBaseUrl = "http://localhost:8901";
+        	//apiGatewayBaseUrl = "http://localhost:8901";
+        	return;
         }
        
        	uri = apiGatewayBaseUrl+"/station/all";
 		System.out.println("RouteBean.before call to : "+uri);
         stationTOList = restTemplate.getForObject(uri, StationTOList.class);
-		System.out.println("RouteBean.getAllStation() ************** = "+stationTOList);
+		System.out.println("RouteBean.getAllStation().count() ************** = "+stationTOList.getStationList().size());
 		stationList = stationTOList.getStationList();
 
 		//populate station map for future lookup
@@ -96,12 +100,13 @@ public class RouteBean {
 		//------------------------------------------------------------------------------------
 		//populate route list (API gateway URL is being used here)
 		if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
-        	apiGatewayBaseUrl = "http://localhost:8901";
+        	//apiGatewayBaseUrl = "http://localhost:8901";
+        	return;
         }
        	uri = apiGatewayBaseUrl+"/route/all";
 		System.out.println("RouteBean.before call to : "+uri);
         rtoList = restTemplate.getForObject(uri, RouteTOList.class);
-		System.out.println("RouteBean.getAllRoutes() ************** = "+rtoList);
+		System.out.println("RouteBean.getAllRoutes().count() ************** = "+rtoList.getRouteList().size());
 		routeList = rtoList.getRouteList();
 		//now populate the station names for their Ids
 		for(int i=0;i<routeList.size();i++) {
@@ -117,12 +122,13 @@ public class RouteBean {
 		//------------------------------------------------------------------------------------
 		//populate train list (API gateway URL is being used here)
 		if(StringUtils.isEmpty(apiGatewayBaseUrl)) {
-        	apiGatewayBaseUrl = "http://localhost:8901";
+        	//apiGatewayBaseUrl = "http://localhost:8901";
+        	return;
         }
        	uri = apiGatewayBaseUrl+"/trains";
 		System.out.println("RouteBean.before call to : "+uri);
 		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
-		System.out.println("RouteBean.trains= ************** = "+trainTOList);
+		System.out.println("RouteBean.trains.count= ************** = "+trainTOList.getTrainList().size());
 		if(trainTOList != null) {
 			trainList = trainTOList.getTrainList();
 		}
@@ -138,7 +144,6 @@ public class RouteBean {
 		
 
 		//------------------------------------------------------------------------------------
-
 	}
 
     //************************************************************************************
@@ -147,6 +152,10 @@ public class RouteBean {
     	System.out.println(routeNumber         );
     	System.out.println(startingStationId   );
     	System.out.println(endStationId        );
+        System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
+        if(apiGatewayBaseUrl == null) {
+        	return;
+        }
         
 		RouteTO routeTO = new RouteTO();
         routeTO.setRouteId(routeId);
@@ -164,7 +173,11 @@ public class RouteBean {
     public void stationSaveAction() {
     	System.out.println(stationId             );
     	System.out.println(stationName           );
-        
+        System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
+        if(apiGatewayBaseUrl == null) {
+        	return;
+        }
+
 		StationTO stationTO = new StationTO();
         stationTO.setStationId(stationId);
         stationTO.setStationName(stationName);
