@@ -7,9 +7,4 @@ eureka_server.log
 mvnw
 mvnw.cmd
 *.classpath
-/metro-config-server/c.bat
-/metro-config-server/r.bat
-/metro-route-service/c.bat
-/metro-route-service/r.bat
-/metro-ui-service/c.bat
-/metro-ui-service/r.bat
+c.bat
