@@ -37,13 +37,12 @@ public class RouteService {
 				returnRoutes.add(routeTO);
 			});
 			
-			System.out.println("RouteService.getAllRoutes() ************** discoveryClient="+discoveryClient);
-			List<ServiceInstance> instances=discoveryClient.getInstances("METRO-TRAIN-SERVICE");
-			System.out.println("RouteService.getAllRoutes() ************** instances="+instances);
-			ServiceInstance serviceInstance=instances.get(0);
-			String baseUrl=serviceInstance.getUri().toString(); 
-			       
-			System.out.println("RouteService.getAllRoutes() ************** baseUrl="+baseUrl);
+//			System.out.println("RouteService.getAllRoutes() ************** discoveryClient="+discoveryClient);
+//			List<ServiceInstance> instances=discoveryClient.getInstances("METRO-TRAIN-SERVICE");
+//			System.out.println("RouteService.getAllRoutes() ************** instances="+instances);
+//			ServiceInstance serviceInstance=instances.get(0);
+//			String baseUrl=serviceInstance.getUri().toString(); 
+//			System.out.println("RouteService.getAllRoutes() ************** baseUrl="+baseUrl);
 			
 			return returnRoutes;
 		} catch (Exception e) {

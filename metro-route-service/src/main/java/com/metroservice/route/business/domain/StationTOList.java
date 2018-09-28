@@ -12,11 +12,4 @@ import lombok.Data;
 @Data
 public class StationTOList {
 	private List<StationTO> stationList = new ArrayList<StationTO>();
-
-//    public List<StationTO> getStationList() { 
-//		return stationList;
-//	}
-//	public void setStationList(List<StationTO> stationList) { 
-//		this.stationList = stationList;
-//	}
 }

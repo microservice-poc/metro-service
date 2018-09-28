@@ -13,11 +13,4 @@ import lombok.Data;
 @Data
 public class RouteTOList {
 	private List<RouteTO> routeList = new ArrayList<RouteTO>();
-
-//    public List<RouteTO> getRouteList() { 
-//		return routeList;
-//	}
-//	public void setRouteList(List<RouteTO> routeList) { 
-//		this.routeList = routeList;
-//	}
 }
