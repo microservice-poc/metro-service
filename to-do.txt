@@ -59,9 +59,18 @@ Big picture
 
 
 ================================================================================
+Discussed on Oct 10
 
+Krish - Authetication server(inhouse)and OAuth client.
+        Create a user with admin role. Has access to 4 links.
+		Create a user with passenger role.  Has access to 2 links.
+		Restrict based on HTTP METHOD.
+		
+		
+Akhil - Any insert or update on Train service table, Kafka will monitor for the DB changes and sends a message to Topic.
+        Kafka then will pick up the message from topic and write to Scheduler table.
+		
+		
 
 
 ================================================================================
-todo
-remove
