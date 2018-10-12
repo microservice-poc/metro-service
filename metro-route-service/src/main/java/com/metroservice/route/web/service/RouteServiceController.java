@@ -6,6 +6,8 @@ import com.metroservice.route.business.service.RouteService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,10 @@ public class RouteServiceController {
 
     @Autowired
     private RouteService routeService;
+    @Autowired
+	private KafkaTemplate<String,RouteTO> kafkaTemplate;
+    @Value("${kafka.route.topic}")
+    private String TOPIC;
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/route/all")
     @HystrixCommand(fallbackMethod = "getAllRoutesFallBack")
@@ -48,6 +54,7 @@ public class RouteServiceController {
     public void saveRoute(@RequestBody RouteTO routeTO) throws Exception {
 		System.out.println("RouteServiceController.saveRoute():***routeTO="+routeTO);
 		RouteTO dto = this.routeService.saveRoute(routeTO);
+		kafkaTemplate.send(TOPIC, dto);
 		System.out.println("RouteServiceController.saveRoute():***dto="+dto);
     }
     //------------------------------------------------------------------------------------------------------------------------------
