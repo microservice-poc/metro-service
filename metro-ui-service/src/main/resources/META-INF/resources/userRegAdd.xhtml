@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+  <title>User Registration Add/Update</title>
+</h:head>
+
+<h:body>
+  <h:form id="user-reg-add-form">
+
+    <p:panel header="Metro Service - User Registration Add/Update">
+      <h:panelGrid columns="2" cellpadding="4">
+        <h:outputText value="User ID: " />
+        <p:inputText id="userId" value="#{userRegBean.userId}" readonly="#{facesContext.renderResponse}" />
+		
+        <h:outputText value="User Name: " />
+        <p:inputText id="userName" value="#{userRegBean.userName}" />
+		
+        <h:outputText value="User Email: " />
+        <p:inputText id="email" value="#{userRegBean.email}" />
+		
+        <h:outputText value="Gender: " />
+        <p:inputText id="gender" value="#{userRegBean.gender}" />
+		
+		
+        <p:commandButton id="submit" value="Save" actionListener="#{userRegBean.userRegSaveAction}" oncomplete="PF('dialogSave').show()" />
+      </h:panelGrid>
+    </p:panel>
+
+    <p:dialog header="UserReg saved" widgetVar="dialogSave" modal="true" resizable="false" showEffect="fade" closable="true" closeOnEscape="true" hideEffect="fade" >
+      <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
+        <h:outputText value="User saved" />
+        <p:commandButton id="popup_close" value="OK" oncomplete="PF('dialogSave').hide();" />
+      </h:panelGrid>
+    </p:dialog>
+
+  </h:form>
+</h:body>
+</html>

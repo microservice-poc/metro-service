@@ -13,7 +13,7 @@
 <h:body>
 <h:form>
     <p:dataTable 
-                id="routeTable" 
+                id="stationTable" 
                 value="#{routeBean.stationList}" 
                 var="stationTO" 
                 paginator="true" 
@@ -24,10 +24,10 @@
         <f:facet name="header">
             Metro Station List
         </f:facet>				
-        <p:column headerText="RouteId" sortBy="#{stationTO.routeId}" >
+        <p:column headerText="StationId" sortBy="#{stationTO.stationId}" >
             <h:outputText value="#{stationTO.stationId}" />
         </p:column>
-        <p:column headerText="RouteNumber" sortBy="#{stationTO.routeNumber}" >
+        <p:column headerText="stationName" sortBy="#{stationTO.stationName}" >
             <h:outputText value="#{stationTO.stationName}" />
         </p:column>
     </p:dataTable>
