@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+  <title>Route Add/Update</title>
+</h:head>
+
+<h:body>
+  <h:form id="route-add-form">
+
+    <p:panel header="Metro Service - Route Add/Update">
+      <h:panelGrid columns="2" cellpadding="4">
+        <h:outputText value="Route ID: " />
+        <p:inputText id="routeId" value="#{routeBean.routeId}" readonly="#{facesContext.renderResponse}" />
+		
+        <h:outputText value="Route Number: " />
+        <p:inputText id="routeNumber" value="#{routeBean.routeNumber}" />
+		
+        <h:outputText value="Start Station : " />
+		<p:selectOneMenu id="startingStationId" value="#{routeBean.startingStationId}" style="width:150px">
+			<f:selectItem itemLabel="Select Start Station" itemValue="" noSelectionOption="true" />
+			<f:selectItems value="#{routeBean.stationDropdownList}" />
+		</p:selectOneMenu>
+			
+        <h:outputText value="End Station : " />
+		<p:selectOneMenu id="endStationId" value="#{routeBean.endStationId}" style="width:150px">
+			<f:selectItem itemLabel="Select End Station" itemValue="" noSelectionOption="true" />
+			<f:selectItems value="#{routeBean.stationDropdownList}" />
+		</p:selectOneMenu>
+			
+        <h:outputText value="Train To Use : " />
+		<p:selectOneMenu id="trainId" value="#{routeBean.trainId}" style="width:150px">
+			<f:selectItem itemLabel="Select Train " itemValue="" noSelectionOption="true" />
+			<f:selectItems value="#{routeBean.trainDropdownList}" />
+		</p:selectOneMenu>
+			
+
+        <p:commandButton id="submit" value="Save" actionListener="#{routeBean.routeSaveAction}" oncomplete="PF('dialogSave').show()" />
+      </h:panelGrid>
+    </p:panel>
+
+    <p:dialog header="Route saved" widgetVar="dialogSave" modal="true" resizable="false" showEffect="fade" closable="true" closeOnEscape="true" hideEffect="fade" >
+      <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
+        <h:outputText value="Route saved" />
+        <p:commandButton id="popup_close" value="OK" oncomplete="PF('dialogSave').hide();" />
+      </h:panelGrid>
+    </p:dialog>
+
+  </h:form>
+</h:body>
+</html>

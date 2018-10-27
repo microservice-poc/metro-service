@@ -59,9 +59,37 @@ Big picture
 
 
 ================================================================================
+Discussed on Oct 10
+
+Krish - Authetication server(inhouse)and OAuth client.
+        Create a user with admin role. Has access to 4 links.
+		Create a user with passenger role.  Has access to 2 links.
+		Restrict based on HTTP METHOD.
+		
+		
+Akhil - Any insert or update on Train service table, Kafka will monitor for the DB changes and sends a message to Topic.
+        Kafka then will pick up the message from topic and write to Scheduler table.
+		
+		
+tasks
+01> Auth server creation - Complete
+02> Auth server private/public key generation - Shibu
+03> Auth server to return JWT  - Krish ( refer https://jwt.io/introduction/ )
+04> Auth server to sign the JWT - Shibu
+05> Merge user registration and authentication tables - Akhil 
+         When User registration happens, username, Full name, password, role has to be captured from UI and saved in DB.  Password has to be hashed and stored in DB not actual password.
+06> User registration UI screen - Shibu
+07> User Login UI screen - Shibu
+08> Zuul Pre and Post Filter(Java code based) - Ravikiran
+09> UI server to call Auth server by submitting username/password.  It should receive JWT from the auth server - Shibu
+10> UI server subsequently makes call to Train service(via API gateway).  The previously received JWT has to be set in the header of this Rest webservice call - ????
+11> Zuul to recieve the above call, It has to pass through the Pre-filter - ????
+12> In the Zuul Pre-Filter, the header has to be inspected and JWT retrieved - ????
+13> The JWT has to be verified using the Auth server's public stored locally(or DB) - Shibu
+14> If validation success, pass on the call to Train service(original request from UI) (This should set the original JWT in header of train service rest call) - ????
+15> If validation fails, redirect to User login page. - ????
+16> If validation success and control comes to train service.  The train service also has to perform the JWT validation(similar to what is done by the Pre-filter) - ????
 
 
 
 ================================================================================
-todo
-remove

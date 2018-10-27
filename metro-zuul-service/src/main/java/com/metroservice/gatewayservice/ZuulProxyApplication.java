@@ -11,6 +11,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.metroservice.gatewayservice.filter.ErrorFilter;
+import com.metroservice.gatewayservice.filter.PostFilter;
+import com.metroservice.gatewayservice.filter.PreFilter;
+import com.metroservice.gatewayservice.filter.RouteFilter;
+
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
@@ -38,4 +43,26 @@ public class ZuulProxyApplication {
 	    source.registerCorsConfiguration("/**", config);
 	    return new CorsFilter(source);
 	}
+	
+	
+	@Bean
+	public PreFilter preFilter() {
+		return new PreFilter();
+	}
+
+	@Bean
+	public PostFilter postFilter() {
+		return new PostFilter();
+	}
+
+	@Bean
+	public ErrorFilter errorFilter() {
+		return new ErrorFilter();
+	}
+
+	@Bean
+	public RouteFilter routeFilter() {
+		return new RouteFilter();
+	}
+	
 }

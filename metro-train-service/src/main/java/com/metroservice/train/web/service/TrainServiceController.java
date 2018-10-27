@@ -3,6 +3,8 @@ package com.metroservice.train.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metroservice.train.business.domain.TrainTO;
+import com.metroservice.train.business.domain.TrainTOList;
 import com.metroservice.train.business.service.TrainService;
 
 @RestController
@@ -17,13 +20,19 @@ public class TrainServiceController {
 
     @Autowired
     private TrainService trainService;
-
+    @Autowired
+	private KafkaTemplate<String,TrainTO> kafkaTemplate;
+    @Value("${kafka.train.topic}")
+    private String TOPIC;
+	
     @RequestMapping(method= RequestMethod.GET, value="/trains")
-    public List<TrainTO> getAllTrains() throws Exception {
+    public TrainTOList getAllTrains() throws Exception {
 		System.out.println("getAllTrains**********************trainService*******************************************="+trainService);
 		List<TrainTO> trainsListTo = trainService.getAllTrains();
+        TrainTOList ttolist = new TrainTOList();
+        ttolist.setTrainList(trainsListTo);
 		System.out.println("All trains======================================"+trainsListTo);
-        return trainsListTo;
+        return ttolist;
     }
     
     @RequestMapping(method= RequestMethod.GET, value="/train/trainId/{trainId}")
@@ -50,6 +59,7 @@ public class TrainServiceController {
     public void addTrain(@RequestBody TrainTO trainTO) throws Exception {
 		System.out.println("TrainServiceController.saveTrain():***trainTO="+trainTO);
 		TrainTO retTrainTo = trainService.addTrain(trainTO);
+		kafkaTemplate.send(TOPIC, retTrainTo);
 		System.out.println("TrainServiceController.saveRoute():***retTrainTo="+retTrainTo);
     }
     

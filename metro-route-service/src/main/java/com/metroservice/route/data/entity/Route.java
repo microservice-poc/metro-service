@@ -16,6 +16,8 @@ public class Route {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 	
+    @Column(name="ROUTE_NUMBER")
+    private String routeNumber;
 	
     @Column(name="START_STATION_ID")
     private long startingStationId;
@@ -34,6 +36,14 @@ public class Route {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getRouteNumber() {
+        return routeNumber;
+    }
+
+    public void setRouteNumber(String routeNumber) {
+        this.routeNumber = routeNumber;
     }
 
     public long getStartingStationId() {

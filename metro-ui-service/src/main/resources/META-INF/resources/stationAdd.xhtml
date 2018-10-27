@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+  <title>Station Add/Update</title>
+</h:head>
+
+<h:body>
+  <h:form id="station-add-form">
+
+    <p:panel header="Metro Service - Station Add/Update">
+      <h:panelGrid columns="2" cellpadding="4">
+        <h:outputText value="Station ID: " />
+        <p:inputText id="stationId" value="#{routeBean.stationId}" readonly="#{facesContext.renderResponse}" />
+		
+        <h:outputText value="Station Name: " />
+        <p:inputText id="stationName" value="#{routeBean.stationName}" />
+		
+        <p:commandButton id="submit" value="Save" actionListener="#{routeBean.stationSaveAction}" oncomplete="PF('dialogSave').show()" />
+      </h:panelGrid>
+    </p:panel>
+
+    <p:dialog header="Station saved" widgetVar="dialogSave" modal="true" resizable="false" showEffect="fade" closable="true" closeOnEscape="true" hideEffect="fade" >
+      <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
+        <h:outputText value="Station saved" />
+        <p:commandButton id="popup_close" value="OK" oncomplete="PF('dialogSave').hide();" />
+      </h:panelGrid>
+    </p:dialog>
+
+  </h:form>
+</h:body>
+</html>

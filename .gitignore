@@ -6,4 +6,10 @@ eureka_server.log
 .mvn
 mvnw
 mvnw.cmd
-*.classpath
+**/*.classpath
+**/*.project
+**/c.bat
+**/cr.bat
+**/*.log
+**/*log*gz
+
