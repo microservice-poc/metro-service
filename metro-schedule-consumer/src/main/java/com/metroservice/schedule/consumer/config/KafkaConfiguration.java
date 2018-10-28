@@ -82,7 +82,7 @@ public class KafkaConfiguration {
 		return new DefaultKafkaConsumerFactory<>(configs,new StringDeserializer(),new JsonDeserializer<>(TrainTO.class));
 	}
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, TrainTO> trainKafkaListenerContainerFactory() {
+	public ConcurrentKafkaListenerContainerFactory<String, TrainTO> trainKafkaListenerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, TrainTO> factory = new ConcurrentKafkaListenerContainerFactory<String, TrainTO>();
 		factory.setConsumerFactory(trainConsumerFactory());
 		return factory;

@@ -19,7 +19,7 @@ public class KafkaConsumer {
 	public void consumeJson(TrainTO trainTo) {
 		System.out.println("Train Consumed JSON Message: " + trainTo);
 	}
-	@KafkaListener(topics = "route_topic", group = "route_group", containerFactory = "routeKafkaListenerContainerFactory")
+	@KafkaListener(topics = "route_topic", group = "route_group", containerFactory = "routeKafkaListenerFactory")
 	public void consume(RouteTO routeTo) {
 		System.out.println("The Route is " + routeTo);
 	}
