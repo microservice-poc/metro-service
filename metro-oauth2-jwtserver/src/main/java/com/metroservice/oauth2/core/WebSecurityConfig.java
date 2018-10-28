@@ -1,47 +1,48 @@
 package com.metroservice.oauth2.core;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
-        // @formatter:off
-	auth.inMemoryAuthentication()
-	  .withUser("john").password("123").roles("USER").and()
-	  .withUser("tom").password("111").roles("ADMIN").and()
-	  .withUser("user1").password("pass").roles("USER").and()
-	  .withUser("admin").password("nimda").roles("ADMIN");
-    }// @formatter:on
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
-    @Override
-    protected void configure(final HttpSecurity http) throws Exception {
-        // @formatter:off
-		http.authorizeRequests().antMatchers("/login").permitAll()
-		.antMatchers("/oauth/token/revokeById/**").permitAll()
-		.antMatchers("/tokens/**").permitAll()
-		.anyRequest().authenticated()
-		.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
-		.and().formLogin().permitAll()
-		.and().csrf().disable();
-		// @formatter:on
-    }
+	@Override
+	public void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().exceptionHandling()
+				.authenticationEntryPoint(
+						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+				.and().authorizeRequests().antMatchers("/**").authenticated().and().httpBasic();
+	}
+
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	}
 
 }
