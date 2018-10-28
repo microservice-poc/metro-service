@@ -5,8 +5,23 @@ GRANT CONNECT, RESOURCE, DBA TO SCHEDULE;
 GRANT UNLIMITED TABLESPACE TO SCHEDULE;
 connect SCHEDULE/schedule;
 
-create table SCHEDULE(schedule_id number(10) not null,route_id number(10) not null,train_id number(10) not null,start_time TIMESTAMP,end_time TIMESTAMP,constraint schedule_pk PRIMARY KEY (schedule_id));
+create table SCHEDULE.SCHEDULE(schedule_id number(10) not null,route_id number(10) not null,train_id number(10) not null,start_time TIMESTAMP,end_time TIMESTAMP,constraint schedule_pk PRIMARY KEY (schedule_id));
+CREATE TABLE SCHEDULE.ROUTE (
+  ROUTE_ID               NUMBER PRIMARY KEY,
+  ROUTE_NUMBER           VARCHAR(100),
+  START_STATION_ID       NUMBER NOT NULL,
+  END_STATION_ID         NUMBER NOT NULL,
+  TRAIN_NUMBER           NUMBER         ,
+  LAST_MODIFIED_DATETIME TIMESTAMP  DEFAULT CURRENT_DATE
+);
 
+CREATE TABLE SCHEDULE.TRAIN (
+  TRAIN_ID               NUMBER PRIMARY KEY,
+  TRAIN_NAME             VARCHAR(100),
+  TRAIN_NUMBER           NUMBER,
+  LAST_SERVICED_DATE     DATE,
+  LAST_MODIFIED_DATETIME TIMESTAMP  DEFAULT CURRENT_DATE
+);
 CREATE SEQUENCE SCHEDULE.schedule_sequence INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999;
 insert into SCHEDULE(schedule_id ,route_id ,train_id ,start_time,end_time) values (schedule_sequence.nextval,1,1,to_date('20180804 08:30:00','yyyymmdd hh24:mi:ss'),to_date('20180804 20:30:00','yyyymmdd hh24:mi:ss'));
 
