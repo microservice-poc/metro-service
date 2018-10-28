@@ -2,18 +2,29 @@ package com.metroservice.schedule.consumer.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="TRAIN")
 public class TrainTO {
-	
-	private long   trainId             ;
+	@Id
+    @Column(name="TRAIN_ID")
+	private Long   trainId             ;
+	@Column(name="TRAIN_NAME")
     private String trainName           ;
-    private long   trainNumber         ;
+	@Column(name="TRAIN_NUMBER")
+    private Long   trainNumber         ;
+	@Column(name="LAST_SERVICED_DATE")
     private Date   lastServicedDate    ;
+	@Column(name="LAST_MODIFIED_DATETIME")
     private Date   lastModifiedDate    ;
     
-	public long getTrainId() {
+	public Long getTrainId() {
 		return trainId;
 	}
-	public void setTrainId(long trainId) {
+	public void setTrainId(Long trainId) {
 		this.trainId = trainId;
 	}
 	public String getTrainName() {
@@ -22,10 +33,10 @@ public class TrainTO {
 	public void setTrainName(String trainName) {
 		this.trainName = trainName;
 	}
-	public long getTrainNumber() {
+	public Long getTrainNumber() {
 		return trainNumber;
 	}
-	public void setTrainNumber(long trainNumber) {
+	public void setTrainNumber(Long trainNumber) {
 		this.trainNumber = trainNumber;
 	}
 	public Date getLastServicedDate() {
