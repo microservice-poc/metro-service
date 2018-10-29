@@ -1,0 +1,41 @@
+create table SCHEDULE.SCHEDULE(schedule_id number(10) not null,route_id number(10) not null,train_id number(10) not null,start_time TIMESTAMP,end_time TIMESTAMP,constraint schedule_pk PRIMARY KEY (schedule_id));
+CREATE TABLE SCHEDULE.ROUTE (
+  ROUTE_ID               NUMBER PRIMARY KEY,
+  ROUTE_NUMBER           VARCHAR(100),
+  START_STATION_ID       NUMBER NOT NULL,
+  END_STATION_ID         NUMBER NOT NULL,
+  TRAIN_NUMBER           NUMBER         ,
+  LAST_MODIFIED_DATETIME TIMESTAMP  DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE SCHEDULE.TRAIN (
+  TRAIN_ID               NUMBER PRIMARY KEY,
+  TRAIN_NAME             VARCHAR(100),
+  TRAIN_NUMBER           NUMBER,
+  LAST_SERVICED_DATE     DATE,
+  LAST_MODIFIED_DATETIME TIMESTAMP  DEFAULT CURRENT_DATE
+);
+
+working in local:
+
+https://dzone.com/articles/running-apache-kafka-on-windows-os
+https://www.michael-noll.com/blog/2013/03/13/running-a-multi-broker-apache-kafka-cluster-on-a-single-node/
+
+E:\kafka\zookeeper-3.4.12>
+E:\kafka\zookeeper-3.4.12\bin>zkServer.cmd
+
+running kafka:
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic train_topic
+
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic route_topic
+
+
+
+--working
+
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning 
+kafka-console-consumer.bat --zookeeper localhost:2181 --topic test --from-beginning
