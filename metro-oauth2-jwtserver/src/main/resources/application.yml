@@ -1,0 +1,17 @@
+server: 
+  port: 9085
+
+# Oracle settings
+# ===============================
+# = DATA SOURCE
+# ===============================
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@RKALYANA-LAP.in.oracle.com:1521:XE
+    username: METUSER
+    password: METUSER
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    show-sql: true
+    
+check-user-scopes: true

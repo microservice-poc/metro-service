@@ -2,12 +2,9 @@ package com.metroservice.oauth2.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 
-@SpringBootApplication
-@EnableAutoConfiguration()
-@EnableResourceServer
+@SpringBootApplication(exclude = UserDetailsServiceAutoConfiguration.class)
 public class MetroAuthenticationServer {
 
 	public static void main(String[] args) {
