@@ -78,14 +78,27 @@
 	</dependencies>
 
 	<build>
+        <!--
 		<finalName>oauth2-authorization-server</finalName>
+        -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
+                <executions>
+                  <execution>
+                    <goals>
+                      <goal>repackage</goal>
+                    </goals>
+                    <configuration>
+                      <classifier>spring-boot</classifier>
+                    </configuration>
+                  </execution>
+                </executions>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
 					<addResources>true</addResources>
-				</configuration>
+                </configuration>                
 			</plugin>
 
 			<plugin>

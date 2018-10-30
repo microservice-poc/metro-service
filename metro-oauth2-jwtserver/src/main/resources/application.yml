@@ -1,5 +1,5 @@
 server: 
-  port: 9085
+  port: 8601    
 
 # Oracle settings
 # ===============================
@@ -7,7 +7,7 @@ server:
 # ===============================
 spring:
   datasource:
-    url: jdbc:oracle:thin:@RKALYANA-LAP.in.oracle.com:1521:XE
+    url: jdbc:oracle:thin:@localhost:1521:XE
     username: METUSER
     password: METUSER
     driver-class-name: oracle.jdbc.driver.OracleDriver

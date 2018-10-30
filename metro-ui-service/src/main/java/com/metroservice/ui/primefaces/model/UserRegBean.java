@@ -12,19 +12,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.metroservice.ui.business.domain.RouteTO;
-import com.metroservice.ui.business.domain.RouteTOList;
-import com.metroservice.ui.business.domain.StationTO;
-import com.metroservice.ui.business.domain.StationTOList;
-import com.metroservice.ui.business.domain.TrainTO;
-import com.metroservice.ui.business.domain.TrainTOList;
 import com.metroservice.ui.business.domain.UserRegTO;
 import com.metroservice.ui.business.domain.UserRegTOList;
 
@@ -38,7 +31,7 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 	@Value("${APIGATEWAY.BASEURL}") //working because of @Controller
 	private String apiGatewayBaseUrl;	
 	
-	public static final boolean USE_DUMMY_VALUES = false; 
+	public static final boolean USE_DUMMY_VALUES = true; 
 	
     private int    userId;
     private String userName;
@@ -57,7 +50,7 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 
         
         if(USE_DUMMY_VALUES == true) {
-        	populateDummyUserValues();
+        	userRegTOList = populateDummyUserValues();
     		populateModelVariables(userRegTOList);
     		return;
         }
@@ -72,7 +65,7 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
        
        	uri = apiGatewayBaseUrl+"/register/all";
 		System.out.println("UserRegBean.before call to : "+uri);
-		restTemplate.getForObject(uri, UserRegTOList.class);
+		userRegTOList = restTemplate.getForObject(uri, UserRegTOList.class);
 
 		//------------------------------------------------------------------------------------
 		populateModelVariables(userRegTOList);
@@ -121,22 +114,16 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
     //************************************************************************************
 
     //************************************************************************************
-    public void populateDummyUserValues() {
-//    	trainList = new ArrayList();
-//    	TrainTO rto = null;
-//    	rto = new TrainTO();      rto.setTrainId(1);    	rto.setTrainName("Shatabdi"); 		rto.setLastModifiedDate(new Date()); trainList.add(rto);
-//    	rto = new TrainTO();      rto.setTrainId(2);    	rto.setTrainName("Gharib Rath");	rto.setLastModifiedDate(new Date()); trainList.add(rto);
-//    	rto = new TrainTO();      rto.setTrainId(3);    	rto.setTrainName("Bangalore Exp");  rto.setLastModifiedDate(new Date()); trainList.add(rto);
-//    	rto = new TrainTO();      rto.setTrainId(4);    	rto.setTrainName("Mysore Exp");    	rto.setLastModifiedDate(new Date()); trainList.add(rto);
-//
-//    	//populate train list dropdown for UI
-//		trainDropdownList = new ArrayList<SelectItem>();
-//		if(trainList != null) {
-//			for(int i=0;i<trainList.size();i++) {
-//				SelectItem si = new SelectItem(trainList.get(i).getTrainId(), trainList.get(i).getTrainNumber() + " - " + trainList.get(i).getTrainName());
-//				trainDropdownList.add(si); 
-//			}
-//		}
+    public UserRegTOList populateDummyUserValues() {
+    	UserRegTOList listTO = new UserRegTOList(); 
+    	userRegList = new ArrayList<UserRegTO>();
+    	UserRegTO rto = null;
+    	rto = new UserRegTO();      rto.setId(1L);    	rto.setName("Shib"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
+    	rto = new UserRegTO();      rto.setId(2L);    	rto.setName("Guru"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
+    	rto = new UserRegTO();      rto.setId(3L);    	rto.setName("Ravi"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
+    	rto = new UserRegTO();      rto.setId(4L);    	rto.setName("Kris"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
+    	listTO.setUserRegList(userRegList);
+    	return listTO;
     }
 
     //************************************************************************************
