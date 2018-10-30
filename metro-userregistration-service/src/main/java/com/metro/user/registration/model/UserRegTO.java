@@ -1,7 +1,8 @@
-package com.metroservice.ui.business.domain;
+package com.metro.user.registration.model;
 
 import java.util.Date;
-//import java.util.Set;
+import java.util.Set;
+
 
 //import lombok.Data;
 

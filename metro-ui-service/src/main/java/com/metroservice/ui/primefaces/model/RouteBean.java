@@ -36,7 +36,7 @@ public class RouteBean extends SpringBeanAutowiringSupport{
 	@Value("${APIGATEWAY.BASEURL}") //working because of @Controller
 	private String apiGatewayBaseUrl;	
 	
-	public static final boolean USE_DUMMY_VALUES = true; 
+	public static final boolean USE_DUMMY_VALUES = false; 
 	
 	//RouteTO related
     private long   routeId             ;

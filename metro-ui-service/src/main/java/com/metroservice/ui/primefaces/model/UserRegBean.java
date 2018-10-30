@@ -38,7 +38,7 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 	@Value("${APIGATEWAY.BASEURL}") //working because of @Controller
 	private String apiGatewayBaseUrl;	
 	
-	public static final boolean USE_DUMMY_VALUES = true; 
+	public static final boolean USE_DUMMY_VALUES = false; 
 	
     private int    userId;
     private String userName;
@@ -70,9 +70,9 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
         	return;
         }
        
-       	uri = apiGatewayBaseUrl+"/user/all";
-		System.out.println("RouteBean.before call to : "+uri);
-		userRegTOList = restTemplate.getForObject(uri, UserRegTOList.class);
+       	uri = apiGatewayBaseUrl+"/register/all";
+		System.out.println("UserRegBean.before call to : "+uri);
+		restTemplate.getForObject(uri, UserRegTOList.class);
 
 		//------------------------------------------------------------------------------------
 		populateModelVariables(userRegTOList);
@@ -83,9 +83,9 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 		System.out.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
 
 
-		System.out.println("RouteBean.getAllStation().count() ************** = "+userRegTOList);
-		System.out.println("RouteBean.getAllStation().count() ************** = "+userRegTOList.getUserRegList());
-		System.out.println("RouteBean.getAllStation().count() ************** = "+userRegTOList.getUserRegList().size());
+		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegTOList);
+		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegTOList.getUserRegList());
+		System.out.println("UserRegBean..populateModelVariables() ************** = "+userRegTOList.getUserRegList().size());
 		userRegList = userRegTOList.getUserRegList();
 		//------------------------------------------------------------------------------------
 	}
@@ -99,15 +99,16 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
     	System.out.println(gender             );
     	
         System.out.println("apiGatewayBaseUrl="+apiGatewayBaseUrl);
+        
         if(apiGatewayBaseUrl == null) {
         	return;
         }
         
 		UserRegTO userTO = new UserRegTO();
-        userTO.setUserId(userId);
-        userTO.setUserName(userName);
+        userTO.setId(0L);
+        userTO.setName(userName);
         userTO.setEmail(email);
-        userTO.setGender(gender);
+        userTO.setPassword("1234");
         
 		RestTemplate restTemplate = new RestTemplate();
         // (API gateway URL is being used here)
