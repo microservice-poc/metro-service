@@ -14,7 +14,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import com.metroservice.train.data.entity.Train;
+import com.metroservice.train.business.domain.TrainTO;
 
 @EnableKafka
 @Configuration
@@ -24,17 +24,17 @@ public class ScheduleKafkaConfiguration {
 	private String producerInstance;
 
 	@Bean
-	public ProducerFactory<String, Train> producerFactory() {
+	public ProducerFactory<String, TrainTO> producerFactory() {
 		Map<String, Object> config = new HashMap<>();
 		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, producerInstance);
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-		return new DefaultKafkaProducerFactory<String, Train>(config);
+		return new DefaultKafkaProducerFactory<String, TrainTO>(config);
 	}
 
 	@Bean
-	public KafkaTemplate<String, Train> kafkaTemplate() {
-		return new KafkaTemplate<String, Train>(producerFactory());
+	public KafkaTemplate<String, TrainTO> kafkaTemplate() {
+		return new KafkaTemplate<String, TrainTO>(producerFactory());
 	}
 
 }
