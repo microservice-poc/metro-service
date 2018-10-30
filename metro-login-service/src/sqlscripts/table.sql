@@ -1,0 +1,102 @@
+
+
+
+CREATE TABLE METUSER.USER_ROLE (
+USERROLEID NUMBER NOT NULL PRIMARY KEY,
+USERID NUMBER NOT NULL,
+ROLEID NUMBER NOT NULL
+);
+
+CREATE UNIQUE INDEX IDX_USERROLE_UNIQUE ON METUSER.USER_ROLE(USERID,ROLEID);
+
+CREATE TABLE METUSER.ROLE (
+ROLEID NUMBER NOT NULL PRIMARY KEY,
+ROLENAME VARCHAR2(15 CHAR) NOT NULL UNIQUE,
+ROLEDESC VARCHAR2(100 CHAR) NOT NULL,
+CREATEDDATETIME DATE DEFAULT CURRENT_DATE NOT NULL,
+ACTIVE CHAR(1 CHAR) NOT NULL,
+LASTMODIFIEDDATETIME DATE DEFAULT CURRENT_DATE NOT NULL,
+LASTMODIFIEDSIGNON VARCHAR2(50 CHAR) DEFAULT USER NOT NULL
+);
+
+
+
+
+CREATE TABLE METUSER.USER_CREDENTIAL (
+CREDENTIALID NUMBER NOT NULL PRIMARY KEY,
+USERID NUMBER NOT NULL,
+PASSWORD VARCHAR2(100 CHAR) NOT NULL,
+STATUS VARCHAR2(25 CHAR) NOT NULL,
+EXPIREDON DATE NOT NULL,
+LASTMODIFIEDDATETIME DATE DEFAULT CURRENT_DATE NOT NULL,
+LASTMODIFIEDSIGNON VARCHAR2(50 CHAR) DEFAULT USER NOT NULL
+);
+
+CREATE UNIQUE INDEX IDX_USERCREDENTIAL_UNIQUE ON METUSER.USER_CREDENTIAL(CREDENTIALID,USERID);
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE METUSER.ROLE_DET (
+  ROLE_ID NUMBER NOT NULL PRIMARY KEY,
+  ROLE VARCHAR2(255) DEFAULT NULL
+);
+
+CREATE TABLE METUSER.USER_DET (
+  USER_ID NUMBER NOT NULL PRIMARY KEY,
+  ACTIVE NUMBER DEFAULT NULL,
+  EMAIL VARCHAR2(255) NOT NULL,
+  LAST_NAME VARCHAR2(255) NOT NULL,
+  NAME VARCHAR2(255) NOT NULL,
+  PASSWORD VARCHAR2(255) NOT NULL
+);
+
+INSERT INTO METUSER.ROLE_DET VALUES (1,'ADMIN');
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+CREATE TABLE METUSER.USER_DETAIL (
+USERID NUMBER NOT NULL PRIMARY KEY,
+USERNAME VARCHAR2(15 CHAR) NOT NULL,
+FIRSTNAME VARCHAR2(100 CHAR) NOT NULL,
+LASTNAME VARCHAR2(100 CHAR) NOT NULL,
+GENDER CHAR(1 CHAR) NOT NULL,
+AGE NUMBER(3,0),
+DATEOFBIRTH DATE NOT NULL,
+MOBILENO NUMBER(10,0) NOT NULL,
+EMAIL VARCHAR2(250 CHAR) NOT NULL,
+ADDRESSLINE1 VARCHAR2(200 CHAR) NOT NULL,
+ADDRESSLINE2 VARCHAR2(200 CHAR),
+ADDRESSLINE3 VARCHAR2(200 CHAR),
+CITY VARCHAR2(100 CHAR),
+STATE VARCHAR2(200 CHAR),
+POSTALCODE VARCHAR2(50 CHAR),
+COUNTRY VARCHAR2(100 CHAR),
+LASTMODIFIEDDATETIME DATE DEFAULT CURRENT_DATE NOT NULL,
+LASTMODIFIEDSIGNON VARCHAR2(50 CHAR) DEFAULT USER NOT NULL
+);
+
+CREATE UNIQUE INDEX IDX_USERDETAIL_UNIQUE ON METUSER.USER_DETAIL(USERID,USERNAME, EMAIL, MOBILENO);
+
+---------------------------------------------------------------------------------------------------------------------------------------
+ALTER TABLE METUSER.USER_ROLE ADD CONSTRAINT FK_USER_ROLE1 FOREIGN KEY (USERID) REFERENCES METUSER.USER_DETAIL(USERID);
+ALTER TABLE METUSER.USER_ROLE ADD CONSTRAINT FK_USER_ROLE2 FOREIGN KEY (ROLEID) REFERENCES METUSER.ROLE(ROLEID);
+
+ALTER TABLE METUSER.USER_CREDENTIAL ADD CONSTRAINT FK_USER_CREDENTIAL FOREIGN KEY (USERID) REFERENCES METUSER.USER_DETAIL(USERID);
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
