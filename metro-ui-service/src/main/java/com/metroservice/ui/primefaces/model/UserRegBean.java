@@ -31,11 +31,13 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 	@Value("${APIGATEWAY.BASEURL}") //working because of @Controller
 	private String apiGatewayBaseUrl;	
 	
-	public static final boolean USE_DUMMY_VALUES = true; 
+	public static final boolean USE_DUMMY_VALUES = false; 
 	
     private int    userId;
     private String userName;
+    private String lastName;
     private String email;
+    private String password;
     private String gender;
 
     
@@ -101,7 +103,9 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
         userTO.setId(0L);
         userTO.setName(userName);
         userTO.setEmail(email);
-        userTO.setPassword("1234");
+        userTO.setPassword(password);
+        userTO.setLastName(lastName);
+        
         
 		RestTemplate restTemplate = new RestTemplate();
         // (API gateway URL is being used here)
