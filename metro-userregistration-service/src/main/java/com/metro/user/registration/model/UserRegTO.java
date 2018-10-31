@@ -11,7 +11,8 @@ public class UserRegTO {
 	private Long id;
 	private String email;
 	private String password;
-	private String name;
+	private String username;
+	private String firstName;
 	private String lastName;
 	private int active;
 	//private Set<Role> roles;
@@ -35,11 +36,11 @@ public class UserRegTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String name) {
+		this.username = name;
 	}
 	public String getLastName() {
 		return lastName;
@@ -67,8 +68,14 @@ public class UserRegTO {
 	}
 	@Override
 	public String toString() {
-		return "UserRegTO [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
+		return "UserRegTO [id=" + id + ", email=" + email + ", password=" + password + ", name=" + username + ", lastName="
 				+ lastName + ", active=" + active + ", lastModifiedDate=" + lastModifiedDate + "]";
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 }

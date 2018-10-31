@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.metroservice.ui.business.domain.UserRegTO;
-import com.metroservice.ui.business.domain.UserRegTOList;
+import com.metroservice.ui.business.domain.UserRegListTO;
 
 //@Getter @Setter 
 @lombok.Data
@@ -35,25 +35,25 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
 	
     private int    userId;
     private String userName;
+    private String firstName;
     private String lastName;
     private String email;
     private String password;
     private String gender;
 
     
-    private List<UserRegTO> userRegList = null;
+    private List<UserRegTO> userRegList = new ArrayList<>();
 
     @PostConstruct
 	public void getAllData() {
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		
         String uri = "";
-        UserRegTOList userRegTOList = new UserRegTOList();
+        UserRegListTO userRegListTO = new UserRegListTO();
 
-        
         if(USE_DUMMY_VALUES == true) {
-        	userRegTOList = populateDummyUserValues();
-    		populateModelVariables(userRegTOList);
+        	userRegListTO = populateDummyUserValues();
+    		populateModelVariables(userRegListTO);
     		return;
         }
         RestTemplate restTemplate = new RestTemplate();
@@ -67,21 +67,24 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
        
        	uri = apiGatewayBaseUrl+"/register/all";
 		System.out.println("UserRegBean.before call to : "+uri);
-		userRegTOList = restTemplate.getForObject(uri, UserRegTOList.class);
+		userRegListTO = restTemplate.getForObject(uri, UserRegListTO.class);
 
 		//------------------------------------------------------------------------------------
-		populateModelVariables(userRegTOList);
+		populateModelVariables(userRegListTO);
 	}
 
     //************************************************************************************
-	public void populateModelVariables(UserRegTOList userRegTOList ) {
+	public void populateModelVariables(UserRegListTO userRegListTO ) {
 		System.out.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
 
-
-		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegTOList);
-		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegTOList.getUserRegList());
-		System.out.println("UserRegBean..populateModelVariables() ************** = "+userRegTOList.getUserRegList().size());
-		userRegList = userRegTOList.getUserRegList();
+		try {
+		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegListTO);
+		System.out.println("UserRegBean..populateModelVariables().count() ************** = "+userRegListTO.getUserRegList());
+		//System.out.println("UserRegBean..populateModelVariables() ************** = "+userRegListTO.getUserRegList().size());
+		userRegList = userRegListTO.getUserRegList();
+		} catch(Exception e) {
+			//e.printStackTrace();
+		}
 		//------------------------------------------------------------------------------------
 	}
 
@@ -101,9 +104,10 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
         
 		UserRegTO userTO = new UserRegTO();
         userTO.setId(0L);
-        userTO.setName(userName);
+        userTO.setUsername(userName);
         userTO.setEmail(email);
         userTO.setPassword(password);
+        userTO.setFirstName(firstName);
         userTO.setLastName(lastName);
         
         
@@ -118,14 +122,14 @@ public class UserRegBean extends SpringBeanAutowiringSupport{
     //************************************************************************************
 
     //************************************************************************************
-    public UserRegTOList populateDummyUserValues() {
-    	UserRegTOList listTO = new UserRegTOList(); 
+    public UserRegListTO populateDummyUserValues() {
+    	UserRegListTO listTO = new UserRegListTO(); 
     	userRegList = new ArrayList<UserRegTO>();
-    	UserRegTO rto = null;
-    	rto = new UserRegTO();      rto.setId(1L);    	rto.setName("Shib"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
-    	rto = new UserRegTO();      rto.setId(2L);    	rto.setName("Guru"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
-    	rto = new UserRegTO();      rto.setId(3L);    	rto.setName("Ravi"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
-    	rto = new UserRegTO();      rto.setId(4L);    	rto.setName("Kris"); rto.setLastModifiedDate(new Date()); userRegList.add(rto);
+    	UserRegTO userto = null;
+    	userto = new UserRegTO(); userto.setId(1L); userto.setFirstName("Shib"); userto.setLastName("Shib"); userto.setEmail("Shib@oracle.com"); userto.setLastModifiedDate(new Date()); userRegList.add(userto);
+    	userto = new UserRegTO(); userto.setId(2L); userto.setFirstName("Guru"); userto.setLastName("Guru"); userto.setEmail("Guru@oracle.com"); userto.setLastModifiedDate(new Date()); userRegList.add(userto);
+    	userto = new UserRegTO(); userto.setId(3L); userto.setFirstName("Ravi"); userto.setLastName("Ravi"); userto.setEmail("Ravi@oracle.com"); userto.setLastModifiedDate(new Date()); userRegList.add(userto);
+    	userto = new UserRegTO(); userto.setId(4L); userto.setFirstName("Kris"); userto.setLastName("Kris"); userto.setEmail("Kris@oracle.com"); userto.setLastModifiedDate(new Date()); userRegList.add(userto);
     	listTO.setUserRegList(userRegList);
     	return listTO;
     }

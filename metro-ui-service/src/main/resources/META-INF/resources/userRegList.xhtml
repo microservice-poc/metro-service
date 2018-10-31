@@ -7,7 +7,7 @@
 >
 
 <h:head>
-  <title>Station List</title>
+  <title>User List</title>
 </h:head>
 
 <h:body>
@@ -27,8 +27,14 @@
         <p:column headerText="Id" sortBy="#{userRegTO.id}" >
             <h:outputText value="#{userRegTO.id}" />
         </p:column>
-        <p:column headerText="Name" sortBy="#{userRegTO.name}" >
-            <h:outputText value="#{userRegTO.name}" />
+        <p:column headerText="UserName" sortBy="#{userRegTO.username}" >
+            <h:outputText value="#{userRegTO.username}" />
+        </p:column>
+        <p:column headerText="First Name" sortBy="#{userRegTO.firstname}" >
+            <h:outputText value="#{userRegTO.firstName}" />
+        </p:column>
+        <p:column headerText="Last Name" sortBy="#{userRegTO.lastName}" >
+            <h:outputText value="#{userRegTO.lastName}" />
         </p:column>
     </p:dataTable>
 </h:form>

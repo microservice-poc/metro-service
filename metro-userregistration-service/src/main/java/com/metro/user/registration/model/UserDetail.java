@@ -28,25 +28,29 @@ public class UserDetail {
 	@Column(name="USER_ID")
     Long id;
 	
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
 	
-	@Column(name = "password")
+	@Column(name = "PASSWORD")
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")
 	private String password;
 	
-	@Column(name = "name")
+	@Column(name = "USERNAME")
 	@NotEmpty(message = "*Please provide your name")
-	private String name;
+	private String username;
 	
-	@Column(name = "last_name")
+	@Column(name = "FIRST_NAME")
+	@NotEmpty(message = "*Please provide your first name")
+	private String firstName;
+	
+	@Column(name = "LAST_NAME")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
 	
-	@Column(name = "active")
+	@Column(name = "ACCOUNT_LOCKED")
 	private int active;
 	
 //	@ManyToMany(cascade = CascadeType.MERGE)
@@ -71,11 +75,11 @@ public class UserDetail {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String name) {
+		this.username = name;
 	}
 	public String getLastName() {
 		return lastName;
@@ -95,4 +99,25 @@ public class UserDetail {
 //	public void setRoles(Set<Role> roles) {
 //		this.roles = roles;
 //	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "UserDetail [id=" + id + ", email=" + email + ", password=" + password + ", username=" + username
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", active=" + active + "]";
+	}
+	
 }
