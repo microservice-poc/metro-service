@@ -1,7 +1,7 @@
 package com.metroservice.route.web.service;
 
 import com.metroservice.route.business.domain.RouteTO;
-import com.metroservice.route.business.domain.RouteTOList;
+import com.metroservice.route.business.domain.RouteListTO;
 import com.metroservice.route.business.service.RouteService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
@@ -30,10 +30,10 @@ public class RouteServiceController {
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/route/all")
     @HystrixCommand(fallbackMethod = "getAllRoutesFallBack")
-    public RouteTOList getAllRoutes() throws Exception {
+    public RouteListTO getAllRoutes() throws Exception {
 		try {
 			List<RouteTO> routes = this.routeService.getAllRoutes();
-			RouteTOList rtoList = new RouteTOList();
+			RouteListTO rtoList = new RouteListTO();
 			rtoList.setRouteList(routes);
 			System.out.println("RouteServiceController.getAllRoutes() ***routes="+routes);
 			return rtoList;
@@ -79,9 +79,9 @@ public class RouteServiceController {
     //------------------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------------------
     
-    public RouteTOList getAllRoutesFallBack() {
+    public RouteListTO getAllRoutesFallBack() {
     	//get Route details from cache.
-    	RouteTOList rtoList = new RouteTOList();
+    	RouteListTO rtoList = new RouteListTO();
     	List<RouteTO> returnRoutes = new ArrayList<>();
     	
     	RouteTO to = new RouteTO();

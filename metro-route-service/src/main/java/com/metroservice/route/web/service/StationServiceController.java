@@ -1,7 +1,7 @@
 package com.metroservice.route.web.service;
 
 import com.metroservice.route.business.domain.StationTO;
-import com.metroservice.route.business.domain.StationTOList;
+import com.metroservice.route.business.domain.StationListTO;
 import com.metroservice.route.business.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +19,10 @@ public class StationServiceController {
     private StationService stationService;
     //------------------------------------------------------------------------------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET, value="/station/all")
-    public StationTOList getAllStations() throws Exception {
+    public StationListTO getAllStations() throws Exception {
 		List<StationTO> stations = this.stationService.getAllStations();
 		System.out.println("StationServiceController.getAllStations() ***stations="+stations);
-		StationTOList stoList = new StationTOList();
+		StationListTO stoList = new StationListTO();
 		stoList.setStationList(stations);
         return stoList;
     }

@@ -9,7 +9,7 @@ import lombok.Data;
 
 //@Getter @Setter 
 @Data
-public class StationTOList {
+public class StationListTO {
 	private List<StationTO> stationList = new ArrayList<StationTO>();
 
 //    public List<StationTO> getStationList() { 

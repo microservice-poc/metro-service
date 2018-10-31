@@ -10,7 +10,7 @@ import lombok.Data;
 
 //@Getter @Setter 
 @Data
-public class RouteTOList {
+public class RouteListTO {
 	private List<RouteTO> routeList = new ArrayList<RouteTO>();
 
 //    public List<RouteTO> getRouteList() { 

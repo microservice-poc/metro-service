@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
 
+//@Getter @Setter 
 @Data
-public class UserRegTOList {
-	private List<UserRegTO> userRegList = new ArrayList<UserRegTO>();
+public class TrainListTO {
+	private List<TrainTO> trainList = new ArrayList<TrainTO>();
 }

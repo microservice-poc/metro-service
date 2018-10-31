@@ -20,11 +20,11 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.metroservice.ui.business.domain.RouteTO;
-import com.metroservice.ui.business.domain.RouteTOList;
+import com.metroservice.ui.business.domain.RouteListTO;
 import com.metroservice.ui.business.domain.StationTO;
-import com.metroservice.ui.business.domain.StationTOList;
+import com.metroservice.ui.business.domain.StationListTO;
 import com.metroservice.ui.business.domain.TrainTO;
-import com.metroservice.ui.business.domain.TrainTOList;
+import com.metroservice.ui.business.domain.TrainListTO;
 
 //@Getter @Setter 
 @lombok.Data
@@ -67,19 +67,19 @@ public class RouteBean extends SpringBeanAutowiringSupport{
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		
         String uri = "";
-        RouteTOList routeTOList = new RouteTOList();
-        StationTOList stationTOList = new StationTOList();
-        TrainTOList trainTOList = new TrainTOList();
+        RouteListTO routeListTO = new RouteListTO();
+        StationListTO stationListTO = new StationListTO();
+        TrainListTO trainListTO = new TrainListTO();
         
         if(USE_DUMMY_VALUES == true) {
         	populateDummyStationValues();
         	populateDummyRouteValues();
         	populateDummyTrainValues();
         	
-        	routeTOList.setRouteList(routeList);
-        	stationTOList.setStationList(stationList);
-        	trainTOList.setTrainList(trainList);
-    		populateModelVariables(routeTOList, stationTOList, trainTOList);
+        	routeListTO.setRouteList(routeList);
+        	stationListTO.setStationList(stationList);
+        	trainListTO.setTrainList(trainList);
+    		populateModelVariables(routeListTO, stationListTO, trainListTO);
     		return;
         }
         RestTemplate restTemplate = new RestTemplate();
@@ -95,7 +95,7 @@ public class RouteBean extends SpringBeanAutowiringSupport{
        
        	uri = apiGatewayBaseUrl+"/station/all";
 		System.out.println("RouteBean.before call to : "+uri);
-        stationTOList = restTemplate.getForObject(uri, StationTOList.class);
+        stationListTO = restTemplate.getForObject(uri, StationListTO.class);
 
 		//------------------------------------------------------------------------------------
 		//populate route list (API gateway URL is being used here)
@@ -105,7 +105,7 @@ public class RouteBean extends SpringBeanAutowiringSupport{
         }
        	uri = apiGatewayBaseUrl+"/route/all";
 		System.out.println("RouteBean.before call to : "+uri);
-        routeTOList = restTemplate.getForObject(uri, RouteTOList.class);
+        routeListTO = restTemplate.getForObject(uri, RouteListTO.class);
 
 		//------------------------------------------------------------------------------------
 		//populate train list (API gateway URL is being used here)
@@ -115,22 +115,22 @@ public class RouteBean extends SpringBeanAutowiringSupport{
         }
        	uri = apiGatewayBaseUrl+"/trains";
 		System.out.println("RouteBean.before call to : "+uri);
-		trainTOList = restTemplate.getForObject(uri, TrainTOList.class);
+		trainListTO = restTemplate.getForObject(uri, TrainListTO.class);
 
 
 		//------------------------------------------------------------------------------------
-		populateModelVariables(routeTOList, stationTOList, trainTOList);
+		populateModelVariables(routeListTO, stationListTO, trainListTO);
 	}
 
     //************************************************************************************
-	public void populateModelVariables(RouteTOList routeTOList, StationTOList stationTOList, TrainTOList trainTOList ) {
+	public void populateModelVariables(RouteListTO routeListTO, StationListTO stationListTO, TrainListTO trainListTO ) {
 		System.out.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
 
 
-		System.out.println("RouteBean.getAllStation().count() ************** = "+stationTOList);
-		System.out.println("RouteBean.getAllStation().count() ************** = "+stationTOList.getStationList());
-		System.out.println("RouteBean.getAllStation().count() ************** = "+stationTOList.getStationList().size());
-		stationList = stationTOList.getStationList();
+		System.out.println("RouteBean.getAllStation().count() ************** = "+stationListTO);
+		System.out.println("RouteBean.getAllStation().count() ************** = "+stationListTO.getStationList());
+		System.out.println("RouteBean.getAllStation().count() ************** = "+stationListTO.getStationList().size());
+		stationList = stationListTO.getStationList();
 
 		//populate station map for future lookup
 		stationMap = new HashMap<String, String>();
@@ -145,10 +145,10 @@ public class RouteBean extends SpringBeanAutowiringSupport{
 			stationDropdownList.add(si); 
 		}
 		//------------------------------------------------------------------------------------
-		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeTOList);
-		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeTOList.getRouteList());
-		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeTOList.getRouteList().size());
-		routeList = routeTOList.getRouteList();
+		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeListTO);
+		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeListTO.getRouteList());
+		System.out.println("RouteBean.getAllRoutes().count() ************** = "+routeListTO.getRouteList().size());
+		routeList = routeListTO.getRouteList();
 		//now populate the station names for their Ids
 		for(int i=0;i<routeList.size();i++) {
 			RouteTO rto = routeList.get(i);
@@ -161,11 +161,11 @@ public class RouteBean extends SpringBeanAutowiringSupport{
 		}
 
 		//------------------------------------------------------------------------------------
-		System.out.println("RouteBean.trains.count= ************** = "+trainTOList);
-		System.out.println("RouteBean.trains.count= ************** = "+trainTOList.getTrainList());
-		System.out.println("RouteBean.trains.count= ************** = "+trainTOList.getTrainList().size());
-		if(trainTOList != null) {
-			trainList = trainTOList.getTrainList();
+		System.out.println("RouteBean.trains.count= ************** = "+trainListTO);
+		System.out.println("RouteBean.trains.count= ************** = "+trainListTO.getTrainList());
+		System.out.println("RouteBean.trains.count= ************** = "+trainListTO.getTrainList().size());
+		if(trainListTO != null) {
+			trainList = trainListTO.getTrainList();
 		}
 		
 		//populate train list dropdown for UI
