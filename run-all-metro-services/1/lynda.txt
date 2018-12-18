@@ -1,5 +1,0 @@
-https://www.lynda.com/Puppet-tutorials/Puppet-Essential-Training/672264-2.html
-https://www.lynda.com/Puppet-tutorials/Mastering-Puppet-Large-Infrastructures/661767-2.html
-https://www.lynda.com/Vagrant-tutorials/Learning-Vagrant/685028-2.html
-https://www.lynda.com/Web-tutorials/Spring-Spring-Security/704153-2.html
-
