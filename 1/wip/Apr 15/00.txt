@@ -1,0 +1,5 @@
+Name of the Candidate	Contact Number	Date of Interview	Mode of Interview	Timings
+Visu.K	9738992283	15/2/2019	T-Con	1:00 PM
+Umarani Vemula	8008275373	15/2/2019	T-Con	3:00 PM
+Rambabu	8885434534	15/2/2019	T-Con	4:30 PM
+Ajeet Saxena	8618985540	15/2/2019	T-Con	5:00 PM
