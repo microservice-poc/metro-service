@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Jenkins Pipeline - Building..'
+                sh "mvn clean install"
             }
         }
         stage('Test') {
